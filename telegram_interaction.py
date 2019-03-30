@@ -219,6 +219,8 @@ def draw_handler(bot, update, chat_data):
 
     game.draw_and_continue(user_id)
     bot.send_message(chat_id=chat_id, text=game.get_state())
+    for id in game.get_players().keys():
+        bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
 
 def play_handler(bot, update, chat_data, args):
@@ -260,6 +262,8 @@ def play_handler(bot, update, chat_data, args):
 
     if not game.is_uno_pending:
         bot.send_message(chat_id=chat_id, text=game.get_state())
+        for id in game.get_players().keys():
+            bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
 
 def uno_button(bot, update, chat_data):
@@ -277,6 +281,8 @@ def uno_button(bot, update, chat_data):
         game.check_uno_caller(user_id)
         game.next_turn(1)
         bot.send_message(chat_id=chat_id, text=game.get_state())
+        for id in game.get_players().keys():
+            bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
 
 def wild_handler(bot, update, chat_data, args):

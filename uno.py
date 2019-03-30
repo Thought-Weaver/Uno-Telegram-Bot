@@ -317,6 +317,9 @@ class Game:
     def get_player(self, id):
         return self.players.get(id, None)
 
+    def get_players(self, id):
+        return self.players
+
     def get_state(self):
         text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
         top_card = self.deck.get_topmost_card()
