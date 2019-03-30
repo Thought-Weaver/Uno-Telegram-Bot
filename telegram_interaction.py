@@ -22,19 +22,6 @@ THRESHOLD_PLAYERS = 10
 PORT = int(os.environ.get('PORT', '8443'))
 
 
-class LazyCallable(object):
-  def __init__(self, name):
-    self.n, self.f = name, None
-  def __call__(self, *a, **k):
-    if self.f is None:
-      modn, funcn = self.n.rsplit('.', 1)
-      if modn not in sys.modules:
-        __import__(modn)
-      self.f = getattr(sys.modules[modn],
-                       funcn)
-    self.f(*a, **k)
-
-
 def static_handler(command):
     """
     Given a string command, returns a CommandHandler for that string that
@@ -318,7 +305,7 @@ if __name__ == "__main__":
                 ("listplayers", 1), ("startgame", 1), ("endgame", 1), ("draw", 1),
                 ("play", 2), ("wild", 2)]
     for c in commands:
-        func = LazyCallable(c[0] + "_handler")
+        func = locals()[c[0] + "_handler"]
         if c[1] == 0:
             dispatcher.add_error_handler(CommandHandler(c[0], func, pass_args=True))
         elif c[1] == 1:
@@ -328,7 +315,7 @@ if __name__ == "__main__":
 
     # Uno button handler
 
-    updater.dispatcher.add_handler(CallbackQueryHandler(uno_button))
+    dispatcher.add_handler(CallbackQueryHandler(uno_button))
 
     # Error handlers
 
