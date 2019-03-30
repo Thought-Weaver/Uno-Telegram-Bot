@@ -51,7 +51,6 @@ def newgame_handler(bot, update, chat_data):
     if game is None and not chat_data.get("is_game_pending", False):
         reset_chat_data(chat_data)
         chat_data["is_game_pending"] = True
-        chat_data["game"] = uno.Game(chat_id)
         text = open("static_responses/new_game.txt", "r").read()
     elif game is not None:
         text = open("static_responses/game_ongoing.txt", "r").read()
