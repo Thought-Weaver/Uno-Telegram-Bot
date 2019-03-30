@@ -51,9 +51,7 @@ def newgame_handler(bot, update, chat_data):
     if game is None and not chat_data.get("is_game_pending", False):
         reset_chat_data(chat_data)
         chat_data["is_game_pending"] = True
-
         text = open("static_responses/new_game.txt", "r").read()
-
         chat_data["game"] = uno.Game(chat_id)
     elif game is not None:
         text = open("static_responses/game_ongoing.txt", "r").read()
@@ -122,6 +120,7 @@ def leave_handler(bot, update, chat_data):
         text = open("static_responses/leave_id_missing_failure.txt", "r").read()
     else:
         text = "You have left the current game."
+        del chat_data["pending_players"][update.message.from_user.id]
 
     bot.send_message(chat_id=chat_id, text=text)
 
