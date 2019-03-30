@@ -1,3 +1,2 @@
 numpy==1.16.2
 python-telegram-bot==11.1.0
-./uno.py

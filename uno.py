@@ -1,4 +1,4 @@
-import numpy as np
+import random
 
 
 THRESHOLD_PLAYERS = 10
@@ -113,7 +113,7 @@ class Deck:
 
     def reshuffle(self):
         if len(self.deck) <= 0 < len(self.played):
-            self.deck = np.random.shuffle(self.played[:-1])
+            self.deck = random.shuffle(self.played[:-1])
             self.played = self.played[-1]
 
     def draw_card(self):
