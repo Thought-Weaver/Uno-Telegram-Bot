@@ -1,0 +1,15 @@
+Here's a list of helpful commands:
+
+-The /start command will start the bot.
+-The /rules command will display a list of Uno rules.
+-The /feedback [text] command will record feedback.
+-The /newgame command will begin a new game of Uno.
+-The /startgame command will start a game of Uno, if there are at least 2 players.
+-The /listplayers command will list all players in the current game.
+-The /join [nickname] command will add the sender to the game under an optional name or their username as a default, if a game is pending.
+-The /leave command will remove the sender from the game, if a game is pending.
+-The /draw command will cause the player to draw a card, if it’s their turn, and then end their turn.
+-The /play [card id] command will cause the player to play that card from their hand, if it’s their turn.
+-The /help command displays a list of these commands.
+-The /wild [either R, Y, B, or G] is to be used when a player has played a Wild card and wishes to specify the new color.
+-The /endgame command will end the current game, if it exists.

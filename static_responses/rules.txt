@@ -1,0 +1,9 @@
+The game is for 2+ players, ages 7 and over. Playing under the age of 7 may be illegal. Every player starts with seven cards, drawn from the main deck of 112 cards. The top card of the deck is then removed and put into a Played Pile and the game begins!
+
+Play begins with the first player in the list and proceeds down the list. In order to play your cards, you have to match either by the number, color, or action. For instance, if the Played Pile has a blue card with a 0 on it, you can either play a 0 or a blue card. You can also play a Wild card or a Wild Draw Four card regardless of the top card, provided its your turn.
+
+If the player has no matches or they choose not to play any of their cards even though they might have a match, they must draw a card from the deck.
+
+There are a few special action cards: Skip, Reverse, and Draw Two. A Skip card skips the next player's turn. A Reverse card reverses the direction of play. A Draw Two card causes the next player to draw two cards and skips their turn.
+
+When a player reaches one card remaining, an Uno button will appear. If the first person to press it is the person who had Uno, the game proceeds as normally. If someone other than the person with Uno presses it, then the person with Uno must draw a card. The game continues until a player has no cards remaining.
