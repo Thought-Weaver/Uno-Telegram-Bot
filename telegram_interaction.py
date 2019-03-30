@@ -307,11 +307,11 @@ if __name__ == "__main__":
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:
-            dispatcher.add_error_handler(CommandHandler(c[0], func, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[0], func, pass_args=True))
         elif c[1] == 1:
-            dispatcher.add_error_handler(CommandHandler(c[0], func, pass_chat_data=True))
+            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True))
         elif c[1] == 2:
-            dispatcher.add_error_handler(CommandHandler(c[0], newgame_handler, pass_chat_data=True, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True, pass_args=True))
 
     # Uno button handler
 
