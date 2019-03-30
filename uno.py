@@ -1,7 +1,10 @@
-import random
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 import telegram
 from telegram.error import Unauthorized, TelegramError
+
+import random
 
 
 THRESHOLD_PLAYERS = 10
