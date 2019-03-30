@@ -71,7 +71,7 @@ def is_nickname_valid(name, user_id, chat_data):
         if name.lower() == chat_data["pending_players"][user_id].lower():
             return True
 
-    for id, user_name in chat_data["pending_players"].items():
+    for id, user_name in chat_data.get("pending_players", []).items():
         if name.lower() == user_name.lower():
             return False
 
@@ -101,7 +101,7 @@ def join_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=update.message.chat_id,
                          text="Joined with nickname %s!" % nickname)
         bot.send_message(chat_id=update.message.chat_id,
-                         text="Current player count: %d" % len(chat_data["pending_players"]))
+                         text="Current player count: %d" % len(chat_data.get("pending_players", [])))
     else:
         text = open("static_responses/invalid_nickname.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
@@ -116,7 +116,7 @@ def leave_handler(bot, update, chat_data):
 
     if not chat_data.get("is_game_pending", False):
         text = open("static_responses/leave_game_not_pending_failure.txt", "r").read()
-    elif user_id not in chat_data["pending_players"]:
+    elif user_id not in chat_data.get("pending_players", []):
         text = open("static_responses/leave_id_missing_failure.txt", "r").read()
     else:
         text = "You have left the current game."
@@ -165,14 +165,14 @@ def startgame_handler(bot, update, chat_data):
         text = open("static_responses/start_game_not_pending.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
-    if len(chat_data["pending_players"]) < MIN_PLAYERS:
+    if len(chat_data.get("pending_players", [])) < MIN_PLAYERS:
         text = open("static_responses/start_game_min_threshold.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
     # Try to message all users.
     try:
-        for user_id, nickname in chat_data["pending_players"].items():
+        for user_id, nickname in chat_data.get("pending_players", []).items():
             bot.send_message(chat_id=user_id, text="Trying to start game!")
     except Unauthorized as u:
         text = open("static_responses/start_game_failure.txt", "r").read()
@@ -180,7 +180,7 @@ def startgame_handler(bot, update, chat_data):
         return
 
     chat_data["is_game_pending"] = False
-    chat_data["game"] = uno.Game(chat_data["pending_players"])
+    chat_data["game"] = uno.Game(chat_data.get("pending_players", []))
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
@@ -190,6 +190,11 @@ def startgame_handler(bot, update, chat_data):
 def endgame_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
     game = chat_data.get("game", None)
+
+    if chat_data.get("is_game_pending", False):
+        text = open("static_responses/end_game.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
