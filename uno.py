@@ -171,8 +171,8 @@ class Game:
         self.draw_fours_pending = 0
         self.draw_twos_pending = 0
         count = 0
-        for i in players.keys():
-            self.players[i] = Player(count, self.deck.draw_hand())
+        for user_id, name in players.items():
+            self.players[user_id] = Player(count, self.deck.draw_hand())
             count += 1
 
     def play_initial_card(self):
