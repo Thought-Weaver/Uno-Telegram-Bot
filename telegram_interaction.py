@@ -51,8 +51,8 @@ def newgame_handler(bot, update, chat_data):
     if game is None and not chat_data.get("is_game_pending", False):
         reset_chat_data(chat_data)
         chat_data["is_game_pending"] = True
-        text = open("static_responses/new_game.txt", "r").read()
         chat_data["game"] = uno.Game(chat_id)
+        text = open("static_responses/new_game.txt", "r").read()
     elif game is not None:
         text = open("static_responses/game_ongoing.txt", "r").read()
     elif chat_data.get("is_game_pending", False):
@@ -218,6 +218,7 @@ def draw_handler(bot, update, chat_data):
         return
 
     game.draw_and_continue(user_id)
+    bot.send_message(chat_id=chat_id, text=game.get_state())
 
 
 def play_handler(bot, update, chat_data, args):
@@ -251,6 +252,9 @@ def play_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=winner + " has won!")
         endgame_handler(bot, update, chat_data)
         return
+
+    if not game.is_uno_pending:
+        bot.send_message(chat_id=chat_id, text=game.get_state())
 
 
 def uno_button(bot, update, chat_data):
