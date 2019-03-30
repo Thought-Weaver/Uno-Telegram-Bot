@@ -185,6 +185,9 @@ def startgame_handler(bot, update, chat_data):
     bot.send_message(chat_id=chat_id, text=text)
     bot.send_message(chat_id=chat_id, text=chat_data["game"].turn_list())
 
+    for user_id, nickname in chat_data.get("pending_players", {}).items():
+        bot.send_message(chat_id=user_id, text=chat_data["game"].get_player(user_id).get_formatted_hand())
+
 
 def endgame_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
