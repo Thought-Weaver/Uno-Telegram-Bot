@@ -184,7 +184,7 @@ def startgame_handler(bot, update, chat_data):
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
-    bot.send_message(chat_id=update.message.chat_id, text=chat_data["game"].turn_list())
+    bot.send_message(chat_id=chat_id, text=chat_data["game"].turn_list())
 
 
 def endgame_handler(bot, update, chat_data):
