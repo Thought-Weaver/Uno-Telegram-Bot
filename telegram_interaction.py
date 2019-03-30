@@ -179,7 +179,7 @@ def startgame_handler(bot, update, chat_data):
         return
 
     chat_data["is_game_pending"] = False
-    chat_data["game"] = uno.Game(chat_data.get("pending_players", []))
+    chat_data["game"] = uno.Game(len(chat_data.get("pending_players", [])))
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
