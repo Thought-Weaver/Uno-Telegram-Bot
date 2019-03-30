@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
     # Main command handlers
 
-    commands = [("feedback", 0), ("newgame", 2), ("join", 2), ("leave", 1),
+    commands = [("feedback", 0), ("newgame", 1), ("join", 2), ("leave", 1),
                 ("listplayers", 1), ("startgame", 1), ("endgame", 1), ("draw", 1),
                 ("play", 2), ("wild", 2)]
     for c in commands:
@@ -311,7 +311,7 @@ if __name__ == "__main__":
         elif c[1] == 1:
             dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True))
         elif c[1] == 2:
-            dispatcher.add_handler(CommandHandler(c[0], newgame_handler, pass_chat_data=True, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True, pass_args=True))
 
     # Uno button handler
 
