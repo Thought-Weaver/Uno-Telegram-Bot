@@ -192,6 +192,7 @@ def endgame_handler(bot, update, chat_data):
     game = chat_data.get("game", None)
 
     if chat_data.get("is_game_pending", False):
+        chat_data["is_game_pending"] = False
         text = open("static_responses/end_game.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
