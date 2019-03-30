@@ -150,6 +150,10 @@ class Deck:
             return True
         return False
 
+    def return_card(self, c):
+        if c.check_valid_color() and c.check_valid_value:
+            self.deck.insert(0, c)
+
 
 class Game:
     def __init__(self, players):
@@ -169,7 +173,11 @@ class Game:
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
-            self.deck.play_card(self.deck.draw_card())
+            card = self.deck.draw_card()
+            while card.value() >= 10:
+                self.deck.return_card(card)
+                card = self.deck.draw_card()
+            self.deck.play_card(card)
         else:
             raise Exception("The starting card has already been played.")
 
