@@ -143,18 +143,16 @@ def feedback_handler(bot, update, args):
     Store feedback from users in a text file.
     """
     if args and len(args) > 0:
-        feedback = open("feedback.txt\n", "a")
+        feedback = open("feedback.txt\n", "a+")
         feedback.write(update.message.from_user.first_name + "\n")
         # Records User ID so that if feature is implemented, can message them
         # about it.
         feedback.write(str(update.message.from_user.id) + "\n")
         feedback.write(" ".join(args) + "\n")
         feedback.close()
-        bot.send_message(chat_id=update.message.chat_id,
-                         text="Thanks for the feedback!")
+        bot.send_message(chat_id=update.message.chat_id, text="Thanks for the feedback!")
     else:
-        bot.send_message(chat_id=update.message.chat_id,
-                         text="Format: /feedback [feedback]")
+        bot.send_message(chat_id=update.message.chat_id, text="Format: /feedback [feedback]")
 
 
 def startgame_handler(bot, update, chat_data):
@@ -179,7 +177,8 @@ def startgame_handler(bot, update, chat_data):
         return
 
     chat_data["is_game_pending"] = False
-    game = uno.Game(chat_id, chat_data.get("pending_players", {}))
+    pending_players = chat_data.get("pending_players", {}).copy()
+    game = uno.Game(chat_id, pending_players)
     chat_data["game"] = game
 
     text = open("static_responses/start_game.txt", "r").read()
