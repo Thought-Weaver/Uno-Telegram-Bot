@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uno.py" afterPath="$PROJECT_DIR$/uno.py" />
     </list>
@@ -17,8 +18,8 @@
       <file leaf-file-name="uno.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="175" column="22" lean-forward="true" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
+            <state relative-caret-position="256">
+              <caret line="178" column="22" lean-forward="true" selection-start-line="178" selection-start-column="22" selection-end-line="178" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -27,8 +28,8 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="185" column="73" lean-forward="true" selection-start-line="185" selection-start-column="73" selection-end-line="185" selection-end-column="73" />
+            <state relative-caret-position="84">
+              <caret line="164" column="52" lean-forward="true" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="52" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -47,9 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>text =</find>
-      <find>play_</find>
-      <find>next_turn(2)</find>
       <find>message all</find>
       <find>get_state()</find>
       <find>feedback</find>
@@ -58,7 +56,6 @@
       <find>np.</find>
       <find>n</find>
       <find>uno.Game(</find>
-      <find>uno.Game</find>
       <find>pending_players&quot;, []</find>
       <find>uno.game</find>
       <find>card.va</find>
@@ -77,6 +74,10 @@
       <find>startgame_handler</find>
       <find>[]</find>
       <find>get_state</find>
+      <find>play_card</find>
+      <find>bot.send</find>
+      <find>uno.Game</find>
+      <find>exception</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -642,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="185" column="73" lean-forward="true" selection-start-line="185" selection-start-column="73" selection-end-line="185" selection-end-column="73" />
+        <state relative-caret-position="84">
+          <caret line="164" column="52" lean-forward="true" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="52" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
@@ -652,8 +653,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="175" column="22" lean-forward="true" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
+        <state relative-caret-position="256">
+          <caret line="178" column="22" lean-forward="true" selection-start-line="178" selection-start-column="22" selection-end-line="178" selection-end-column="22" />
           <folding />
         </state>
       </provider>
