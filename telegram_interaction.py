@@ -311,7 +311,7 @@ if __name__ == "__main__":
         elif c[1] == 1:
             dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True))
         elif c[1] == 2:
-            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[0], newgame_handler, pass_chat_data=True, pass_args=True))
 
     # Uno button handler
 
