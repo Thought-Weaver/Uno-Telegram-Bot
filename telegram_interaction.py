@@ -38,14 +38,14 @@ def static_handler(command):
 def reset_chat_data(chat_data):
     chat_data["is_game_pending"] = False
     chat_data["pending_players"] = {}
-    chat_data["game"] = None
+    chat_data["game_obj"] = None
 
 
 def newgame_handler(bot, update, chat_data):
     """
     Create a new game of Uno.
     """
-    game = chat_data.get("game")
+    game = chat_data.get("game_obj")
     chat_id = update.message.chat.id
 
     if game is None and not chat_data.get("is_game_pending", False):
@@ -127,7 +127,7 @@ def leave_handler(bot, update, chat_data):
 def listplayers_handler(bot, update, chat_data):
     chat_id = update.message.chat_id
     text = "List of players: \n"
-    game = chat_data.get("game")
+    game = chat_data.get("game_obj")
 
     if game is None or not chat_data.get("is_game_pending", False):
         for user_id, name in chat_data.get("pending_players", {}).items():
@@ -178,7 +178,7 @@ def startgame_handler(bot, update, chat_data):
 
     chat_data["is_game_pending"] = False
     game = uno.Game(chat_id, chat_data.get("pending_players", {}))
-    chat_data["game"] = game
+    chat_data["game_obj"] = game
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
@@ -190,7 +190,7 @@ def startgame_handler(bot, update, chat_data):
 
 def endgame_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
-    game = chat_data.get("game", None)
+    game = chat_data.get("game_obj")
 
     if chat_data.get("is_game_pending", False):
         chat_data["is_game_pending"] = False
@@ -211,7 +211,7 @@ def endgame_handler(bot, update, chat_data):
 def draw_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
     user_id = update.message.from_user.id
-    game = chat_data.get("game", None)
+    game = chat_data.get("game_obj")
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
@@ -227,7 +227,7 @@ def draw_handler(bot, update, chat_data):
 def play_handler(bot, update, chat_data, args):
     chat_id = update.message.chat.id
     user_id = update.message.from_user.id
-    game = chat_data.get("game", None)
+    game = chat_data.get("game_obj")
 
     if len(args) != 1:
         bot.send_message(chat_id=chat_id, text="Usage: /play card_id")
@@ -272,7 +272,7 @@ def uno_button(bot, update, chat_data):
     query = update.callback_query
     chat_id = update.message.chat.id
     user_id = query.from_user
-    game = chat_data["game"]
+    game = chat_data["game_obj"]
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
@@ -290,7 +290,7 @@ def uno_button(bot, update, chat_data):
 def wild_handler(bot, update, chat_data, args):
     chat_id = update.message.chat.id
     user_id = update.message.from_user.id
-    game = chat_data.get("game", None)
+    game = chat_data.get("game_obj")
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
