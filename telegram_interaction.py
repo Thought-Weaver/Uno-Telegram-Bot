@@ -263,6 +263,7 @@ def play_handler(bot, update, chat_data, args):
         return
 
     if not game.is_uno_pending:
+        game.next_turn(1)
         bot.send_message(chat_id=chat_id, text=game.get_state())
         for id in game.get_players().keys():
             bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())

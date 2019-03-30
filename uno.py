@@ -16,7 +16,7 @@ class Player:
         return self.id
 
     def remove_card(self, id):
-        if 0 <= id < len(self.hand) - 1:
+        if 0 <= id < len(self.hand):
             return self.hand.pop(id)
         return None
 
@@ -148,7 +148,7 @@ class Deck:
         top = self.get_topmost_card()
         if top is None:
             return True
-        elif top.get_color() == c.get_color() or top.get_value() == c.get_value() or c.is_wild():
+        if top.get_color() == c.get_color() or top.get_value() == c.get_value() or c.is_wild():
             return True
         return False
 
@@ -215,7 +215,6 @@ class Game:
             raise Exception("It is not currently your turn!")
 
         card = player.remove_card(card_id)
-        print(card)
 
         if card is None:
             raise Exception("You cannot remove the card with this ID.")
@@ -333,3 +332,59 @@ class Game:
         else:
             text += "Topmost Card: " + str(top_card)
         return text
+
+"""
+if __name__ == "__main__":
+    ps = {"name" : "name", "example" : "ex"}
+    game = Game(ps)
+    game.play_initial_card()
+
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+
+    print("\n----\n")
+
+    first_hand = game.get_player("name").get_hand()
+    for c in range(len(first_hand)):
+        if game.deck.check_valid_play(first_hand[c]):
+            print("Played: " + str(first_hand[c]) + "\n")
+            game.play_card("name", c)
+            break
+
+    game.next_turn(1)
+
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+
+    print("\n----\n")
+
+    second_hand = game.get_player("example").get_hand()
+    for c in range(len(second_hand)):
+        if game.deck.check_valid_play(second_hand[c]):
+            print("Played: " + str(second_hand[c]) + "\n")
+            game.play_card("example", c)
+            break
+
+    game.next_turn(1)
+
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+
+    game.draw_and_continue("name")
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+    game.draw_and_continue("example")
+    print("----")
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+    game.draw_and_continue("name")
+    print("----")
+    for p in ps.keys():
+        print(game.get_player(p).get_formatted_hand())
+    print(game.get_state())
+"""
