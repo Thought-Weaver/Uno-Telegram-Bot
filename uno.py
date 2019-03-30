@@ -23,7 +23,7 @@ class Player:
     def get_formatted_hand(self):
         text = "Your current hand:\n\n"
         for i in range(len(self.hand)):
-            text += str(self.hand[i]) + "\n"
+            text += "(" + str(i) + ") " + str(self.hand[i]) + "\n"
         return text
 
     def add_card(self, c):
@@ -51,11 +51,11 @@ class Card:
     def get_value(self):
         return self.value
 
-    def check_valid_color(self, c):
-        return c in ['R', 'Y', 'G', 'B']
+    def check_valid_color(self):
+        return self.color in ['R', 'Y', 'G', 'B']
 
-    def check_valid_value(self, v):
-        return v > 0
+    def check_valid_value(self):
+        return self.value > 0
 
     def is_wild(self):
         if self.value == 13 or self.value == 14:
@@ -65,7 +65,7 @@ class Card:
     # Just for wilds.
     def set_color(self, c):
         if self.value == 13 or self.value == 14:
-            if self.check_valid_color(c):
+            if self.check_valid_color():
                 self.color = c
 
     def __str__(self):
@@ -111,6 +111,8 @@ class Deck:
                     else:
                         self.deck.append(Card(i, ''))
 
+        random.shuffle(self.deck)
+
     def reshuffle(self):
         if len(self.deck) <= 0 < len(self.played):
             self.deck = random.shuffle(self.played[:-1])
@@ -139,7 +141,7 @@ class Deck:
         return hand
 
     def play_card(self, c):
-        if c.check_valid_color() and c.check_valid_value:
+        if c.check_valid_color() and c.check_valid_value():
             self.played.append(c)
 
     def check_valid_play(self, c):
@@ -151,7 +153,7 @@ class Deck:
         return False
 
     def return_card(self, c):
-        if c.check_valid_color() and c.check_valid_value:
+        if c.check_valid_color() and c.check_valid_value():
             self.deck.insert(0, c)
 
 
@@ -168,13 +170,15 @@ class Game:
         self.reversed = False
         self.draw_fours_pending = 0
         self.draw_twos_pending = 0
-        for i in range(len(players)):
-            self.players[players[i]] = Player(i, self.deck.draw_hand())
+        count = 0
+        for i in players.keys():
+            self.players[i] = Player(count, self.deck.draw_hand())
+            count += 1
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
             card = self.deck.draw_card()
-            while card.value() >= 10:
+            while card.value >= 10:
                 self.deck.return_card(card)
                 card = self.deck.draw_card()
             self.deck.play_card(card)
@@ -211,6 +215,7 @@ class Game:
             raise Exception("It is not currently your turn!")
 
         card = player.remove_card(card_id)
+        print(card)
 
         if card is None:
             raise Exception("You cannot remove the card with this ID.")
@@ -294,7 +299,7 @@ class Game:
 
         card = self.deck.get_topmost_card()
 
-        if not card.check_valid_color(c):
+        if not card.check_valid_color():
             raise Exception("That is not a valid color. Choose R, G, B, or Y.")
 
         card.set_color(c)
@@ -311,7 +316,7 @@ class Game:
     def list_players(self):
         text = "List of players:\n\n"
         for p in self.players.keys():
-            text += p + " [*]" if self.players[p].get_id() == self.turn else "" + "\n"
+            text += p + (" [*]" if self.players[p].get_id() == self.turn else "") + "\n"
         return text
 
     def get_player(self, id):

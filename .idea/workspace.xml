@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uno.py" afterPath="$PROJECT_DIR$/uno.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,21 +14,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="uno.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="uno.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2010">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="4376">
+              <caret line="334" column="19" lean-forward="false" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="181" column="74" lean-forward="false" selection-start-line="181" selection-start-column="74" selection-end-line="181" selection-end-column="74" />
+            <state relative-caret-position="142">
+              <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="14" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -46,13 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_is</find>
-      <find>game is None</find>
-      <find>get_is_wild_pending</find>
-      <find>args</find>
-      <find>game_obj</find>
-      <find>API_KEY</find>
-      <find>ignore/</find>
       <find>newgame</find>
       <find>newgame_handler</find>
       <find>leave_handler</find>
@@ -75,7 +69,14 @@
       <find>n</find>
       <find>uno.Game(</find>
       <find>uno.Game</find>
+      <find>pending_players&quot;, []</find>
       <find>uno.game</find>
+      <find>card.va</find>
+      <find>check_valid_value</find>
+      <find>check_valid_color</find>
+      <find>pending_players</find>
+      <find>hand</find>
+      <find>you cannot remove</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,9 +109,9 @@
         <option value="$PROJECT_DIR$/procfile" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/runtime.txt" />
-        <option value="$PROJECT_DIR$/uno.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/telegram_interaction.py" />
+        <option value="$PROJECT_DIR$/uno.py" />
       </list>
     </option>
   </component>
@@ -171,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.telegram_interaction">
+  <component name="RunManager" selected="Python.uno">
     <configuration name="telegram_interaction" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -189,9 +190,31 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="uno" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="UnoTelegramBot" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/uno.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.telegram_interaction" />
+      <item index="1" class="java.lang.String" itemvalue="Python.uno" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.telegram_interaction" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.uno" />
+        <item index="1" class="java.lang.String" itemvalue="Python.telegram_interaction" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +243,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -617,21 +640,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uno.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2010">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="181" column="74" lean-forward="false" selection-start-line="181" selection-start-column="74" selection-end-line="181" selection-end-column="74" />
+        <state relative-caret-position="142">
+          <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="14" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uno.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4376">
+          <caret line="334" column="19" lean-forward="false" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
