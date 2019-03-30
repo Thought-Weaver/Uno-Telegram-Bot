@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uno.py" afterPath="$PROJECT_DIR$/uno.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,21 +13,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="uno.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="uno.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="374" column="0" lean-forward="true" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
+            <state relative-caret-position="142">
+              <caret line="154" column="15" lean-forward="false" selection-start-line="154" selection-start-column="15" selection-end-line="154" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="261" column="47" lean-forward="true" selection-start-line="261" selection-start-column="47" selection-end-line="261" selection-end-column="47" />
+            <state relative-caret-position="142">
+              <caret line="185" column="74" lean-forward="true" selection-start-line="185" selection-start-column="74" selection-end-line="185" selection-end-column="74" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -47,7 +46,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>play_init</find>
       <find>initial</find>
       <find>endgame_handler</find>
       <find>text =</find>
@@ -57,7 +55,6 @@
       <find>get_state()</find>
       <find>feedback</find>
       <find>startgame</find>
-      <find>startgame_handler</find>
       <find>draw</find>
       <find>np.</find>
       <find>n</find>
@@ -77,6 +74,8 @@
       <find>check_valid_play</find>
       <find>next_turn</find>
       <find>print(</find>
+      <find>startgame_handler</find>
+      <find>turn_list</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,8 +109,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/telegram_interaction.py" />
         <option value="$PROJECT_DIR$/uno.py" />
+        <option value="$PROJECT_DIR$/telegram_interaction.py" />
       </list>
     </option>
   </component>
@@ -640,21 +639,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
+    <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="261" column="47" lean-forward="true" selection-start-line="261" selection-start-column="47" selection-end-line="261" selection-end-column="47" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="142">
+          <caret line="154" column="15" lean-forward="false" selection-start-line="154" selection-start-column="15" selection-end-line="154" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uno.py">
+    <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="374" column="0" lean-forward="true" selection-start-line="374" selection-start-column="0" selection-end-line="374" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="142">
+          <caret line="185" column="74" lean-forward="true" selection-start-line="185" selection-start-column="74" selection-end-line="185" selection-end-column="74" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

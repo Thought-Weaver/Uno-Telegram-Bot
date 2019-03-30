@@ -183,7 +183,7 @@ def startgame_handler(bot, update, chat_data):
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
-    bot.send_message(chat_id=chat_id, text=chat_data["game"].turn_list())
+    bot.send_message(chat_id=chat_id, text=chat_data["game"].game_state())
 
     for user_id, nickname in chat_data.get("pending_players", {}).items():
         bot.send_message(chat_id=user_id, text=chat_data["game"].get_player(user_id).get_formatted_hand())
