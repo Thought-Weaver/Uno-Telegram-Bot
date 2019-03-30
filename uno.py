@@ -184,10 +184,16 @@ class Game:
         self.chat_id = chat_id
         count = 0
         for user_id, name in players.items():
-            bot.send_message(chat_id=self.chat_id, text=user_id + " has been added to the game.\n")
+            self.send_message(user_id + " has been added to the game.\n")
             self.players[user_id] = Player(count, self.deck.draw_hand())
             count += 1
-        bot.send_message(chat_id=self.chat_id, text="Everything has been set up.\n")
+        self.send_message("Everything has been set up.\n")
+
+    def send_message(self, text):
+        try:
+            bot.send_message(chat_id=self.chat_id, text=text)
+        except TelegramError as e:
+            raise e
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
@@ -197,7 +203,7 @@ class Game:
                 card = self.deck.draw_card()
             self.deck.play_card(card)
         else:
-            bot.send_message(chat_id=self.chat_id, text="The starting card has already been played.")
+            self.send_message("The starting card has already been played.")
 
     def check_for_win(self):
         for p in self.players.keys():
@@ -223,18 +229,18 @@ class Game:
         player = self.players.get(id, None)
 
         if player is None:
-            bot.send_message(chat_id=self.chat_id, text="You don't seem to exist!")
+            self.send_message("You don't seem to exist!")
 
         if player.get_id() != self.turn:
-            bot.send_message(chat_id=self.chat_id, text="It is not currently your turn!")
+            self.send_message("It is not currently your turn!")
 
         card = player.remove_card(card_id)
 
         if card is None:
-            bot.send_message(chat_id=self.chat_id, text="You cannot remove the card with this ID.")
+            self.send_message("You cannot remove the card with this ID.")
 
         if not self.deck.check_valid_play(card):
-            bot.send_message(chat_id=self.chat_id, text="This is not a valid card.")
+            self.send_message("This is not a valid card.")
 
         self.deck.play_card(card)
         if card.is_wild():
@@ -269,8 +275,7 @@ class Game:
 
     def next_turn(self, step):
         if self.waiting_for_wild:
-            bot.send_message(chat_id=self.chat_id,
-                 text="Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_id)
+            self.send_message("Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_id)
 
         dir = -1 if self.reversed else 1
         self.turn = (self.turn + step * dir) % len(self.players)
@@ -296,32 +301,31 @@ class Game:
         player = self.players.get(id, None)
 
         if player is None:
-            bot.send_message(chat_id=self.chat_id, text="You don't seem to exist!")
+            self.send_message("You don't seem to exist!")
 
         if player.get_id() != self.turn:
-            bot.send_message(chat_id=self.chat_id, text="It is not currently your turn!")
+            self.send_message("It is not currently your turn!")
 
         player.add_card(self.deck.draw_card())
         self.next_turn(1)
 
     def set_wild_color(self, id, c):
         if id != self.waiting_for_wild_id:
-            bot.send_message(chat_id=self.chat_id,
-                text="You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_id)
+            self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_id)
 
         if not self.waiting_for_wild:
-            bot.send_message(chat_id=self.chat_id, text="An uncolored Wild card is not on top of the played pile.")
+            self.send_message("An uncolored Wild card is not on top of the played pile.")
 
         card = self.deck.get_topmost_card()
 
         if not card.check_valid_color():
-            bot.send_message(chat_id=self.chat_id, text="That is not a valid color. Choose R, G, B, or Y.")
+            self.send_message("That is not a valid color. Choose R, G, B, or Y.")
 
         card.set_color(c)
 
     def set_uno_pending(self, val):
         if val != True or val != False:
-            bot.send_message(chat_id=self.chat_id, text="Whether or not Uno is pending is a Boolean value.")
+            self.send_message("Whether or not Uno is pending is a Boolean value.")
 
         self.uno_pending = val
 
