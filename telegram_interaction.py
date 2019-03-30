@@ -235,7 +235,12 @@ def play_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    game.play_card(user_id, int(" ".join(args)))
+    result = game.play_card(user_id, int(" ".join(args)))
+
+    if result != "":
+        bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+        return
+
     player = game.get_player(user_id)
 
     if player is None:

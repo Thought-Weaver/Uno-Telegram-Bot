@@ -224,6 +224,7 @@ class Game:
             self.waiting_for_wild_id = id
         if card.get_value() == 10:
             self.next_turn(2)
+            return self.get_state()
         if card.get_value() == 11:
             self.reversed = not self.reversed
         if card.get_value() == 12:
@@ -233,6 +234,8 @@ class Game:
             self.waiting_for_wild_id = id
         if card.get_value() == 14:
             self.draw_fours_pending += 1
+
+        return ""
 
     def is_uno_pending(self):
         return self.uno_pending
