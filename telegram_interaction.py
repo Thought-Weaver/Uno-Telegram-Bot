@@ -322,7 +322,7 @@ def testb_handler(bot, update, chat_data):
     ps = {"12515" : "name", "9125812" : "ex", "1212" : "Meow"}
     game = uno.Game(chat_id, ps)
     for p in ps.keys():
-        bot.send_message(chat_id=chat_id, text=game.get_player(p).get_formatted_hand())
+        bot.send_message(chat_id=chat_id, text=p + ":\n" + game.get_player(p).get_formatted_hand())
     game.play_initial_card()
     bot.send_message(chat_id=chat_id, text=game.get_state())
 
