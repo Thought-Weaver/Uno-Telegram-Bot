@@ -168,7 +168,6 @@ def startgame_handler(bot, update, chat_data):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    # Try to message all users.
     try:
         for user_id, nickname in pending_players.items():
             bot.send_message(chat_id=user_id, text="Trying to start game!")
@@ -179,7 +178,7 @@ def startgame_handler(bot, update, chat_data):
 
     bot.send_message(chat_id=chat_id, text=pending_players)
 
-    chat_data["is_game_pending"] = False
+    reset_chat_data(chat_data)
     game = uno.Game(chat_id, pending_players)
     chat_data["game_obj"] = game
 
@@ -321,6 +320,7 @@ def testb_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
     ps = {"12515" : "name", "9125812" : "ex", "1212" : "Meow"}
     game = uno.Game(chat_id, ps)
+    bot.send_message(chat_id=chat_id, text=ps)
     for p in ps.keys():
         bot.send_message(chat_id=chat_id, text=p + ":\n" + game.get_player(p).get_formatted_hand())
     game.play_initial_card()

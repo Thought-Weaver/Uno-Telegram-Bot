@@ -28,8 +28,8 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="324" column="59" lean-forward="false" selection-start-line="324" selection-start-column="59" selection-end-line="324" selection-end-column="59" />
+            <state relative-caret-position="593">
+              <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -66,18 +66,18 @@
       <find>[]</find>
       <find>get_state</find>
       <find>play_card</find>
-      <find>uno.Game</find>
       <find>exception</find>
       <find>chat_id</find>
       <find>self.bot</find>
-      <find>reset_chat_data</find>
       <find>is_nick</find>
       <find>bot.send</find>
-      <find>uno.game</find>
       <find>&quot;game&quot;</find>
       <find>startgame_hand</find>
       <find>startgame_handelr</find>
       <find>startgame_handler</find>
+      <find>uno.Game</find>
+      <find>uno.game</find>
+      <find>reset_chat_data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -688,8 +688,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="324" column="59" lean-forward="false" selection-start-line="324" selection-start-column="59" selection-end-line="324" selection-end-column="59" />
+        <state relative-caret-position="593">
+          <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
