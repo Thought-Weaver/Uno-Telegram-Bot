@@ -178,8 +178,8 @@ def startgame_handler(bot, update, chat_data):
 
     bot.send_message(chat_id=chat_id, text=pending_players)
 
-    reset_chat_data(chat_data)
-    game = uno.Game(chat_id, pending_players)
+    chat_data["is_game_pending"] = False
+    game = uno.Game(chat_id, {"12515" : "name", "9125812" : "ex", "1212" : "Meow"})
     chat_data["game_obj"] = game
 
     text = open("static_responses/start_game.txt", "r").read()
