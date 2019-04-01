@@ -308,6 +308,19 @@ def handle_error(bot, update, error):
         logging.getLogger(__name__).warning('Telegram Error! %s caused by this update: %s', error, update)
 
 
+def testa_handler(bot, update, chat_data):
+    chat_id = update.message.chat.id
+    player = uno.Player(0, [])
+    bot.send_message(chat_id=chat_id, text=player.get_formatted_hand())
+
+
+def testb_handler(bot, update, chat_data):
+    chat_id = update.message.chat.id
+    game = uno.Game(chat_id, {"name" : "name", "example" : "ex"})
+    game.play_initial_card()
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+
+
 if __name__ == "__main__":
     # Set up the bot
 
@@ -325,7 +338,7 @@ if __name__ == "__main__":
 
     commands = [("feedback", 0), ("newgame", 1), ("join", 2), ("leave", 1),
                 ("listplayers", 1), ("startgame", 1), ("endgame", 1), ("draw", 1),
-                ("play", 2), ("wild", 2)]
+                ("play", 2), ("wild", 2), ("testa", 1), ("testb", 1)]
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:
