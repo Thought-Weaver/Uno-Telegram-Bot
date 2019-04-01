@@ -157,34 +157,37 @@ def feedback_handler(bot, update, args):
 
 def startgame_handler(bot, update, chat_data):
     chat_id = update.message.chat_id
+    pending_players = chat_data.get("pending_players", {})
 
     if not chat_data.get("is_game_pending", False):
         text = open("static_responses/start_game_not_pending.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
-    if len(chat_data.get("pending_players", {})) < MIN_PLAYERS:
+    if len(pending_players) < MIN_PLAYERS:
         text = open("static_responses/start_game_min_threshold.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
     # Try to message all users.
     try:
-        for user_id, nickname in chat_data.get("pending_players", {}).items():
+        for user_id, nickname in pending_players.items():
             bot.send_message(chat_id=user_id, text="Trying to start game!")
     except Unauthorized as u:
         text = open("static_responses/start_game_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
+    bot.send_message(chat_id=chat_id, text=pending_players)
+
     chat_data["is_game_pending"] = False
-    game = uno.Game(chat_id, chat_data.get("pending_players", {}))
+    game = uno.Game(chat_id, pending_players)
     chat_data["game_obj"] = game
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
     bot.send_message(chat_id=chat_id, text=game.get_state())
 
-    for user_id, nickname in chat_data.get("pending_players", {}).items():
+    for user_id, nickname in pending_players.items():
         bot.send_message(chat_id=user_id, text=game.get_player(user_id).get_formatted_hand())
 
 

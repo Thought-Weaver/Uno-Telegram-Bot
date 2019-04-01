@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="312" column="64" lean-forward="false" selection-start-line="312" selection-start-column="64" selection-end-line="312" selection-end-column="64" />
+            <state relative-caret-position="429">
+              <caret line="186" column="48" lean-forward="true" selection-start-line="186" selection-start-column="48" selection-end-line="186" selection-end-column="48" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -48,7 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>np.</find>
       <find>n</find>
       <find>uno.Game(</find>
       <find>pending_players&quot;, []</find>
@@ -78,6 +78,7 @@
       <find>uno.game</find>
       <find>&quot;game&quot;</find>
       <find>startgame_hand</find>
+      <find>startgame_handelr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -688,8 +689,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="312" column="64" lean-forward="false" selection-start-line="312" selection-start-column="64" selection-end-line="312" selection-end-column="64" />
+        <state relative-caret-position="429">
+          <caret line="186" column="48" lean-forward="true" selection-start-line="186" selection-start-column="48" selection-end-line="186" selection-end-column="48" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
