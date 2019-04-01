@@ -319,7 +319,7 @@ def testa_handler(bot, update, chat_data):
 
 def testb_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
-    ps = {"name" : "name", "example" : "ex", "1212" : "Meow"}
+    ps = {"12515" : "name", "9125812" : "ex", "1212" : "Meow"}
     game = uno.Game(chat_id, ps)
     for p in ps.keys():
         bot.send_message(chat_id=chat_id, text=game.get_player(p).get_formatted_hand())
