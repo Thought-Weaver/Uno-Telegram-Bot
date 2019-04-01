@@ -176,18 +176,16 @@ def startgame_handler(bot, update, chat_data):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    bot.send_message(chat_id=chat_id, text=pending_players)
-
     chat_data["is_game_pending"] = False
-    game = uno.Game(chat_id, {"12515" : "name", "9125812" : "ex", "1212" : "Meow"})
-    chat_data["game_obj"] = game
+    chat_data["game_obj"] = uno.Game(chat_id, chat_data["pending_players"])
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
-    bot.send_message(chat_id=chat_id, text=game.get_state())
+    chat_data["game_obj"].play_initial_card()
+    bot.send_message(chat_id=chat_id, text=chat_data["game_obj"].get_state())
 
     for user_id, nickname in pending_players.items():
-        bot.send_message(chat_id=user_id, text=game.get_player(user_id).get_formatted_hand())
+        bot.send_message(chat_id=user_id, text=chat_data["game_obj"].get_player(user_id).get_formatted_hand())
 
 
 def endgame_handler(bot, update, chat_data):
