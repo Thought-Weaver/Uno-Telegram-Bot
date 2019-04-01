@@ -310,13 +310,16 @@ def handle_error(bot, update, error):
 
 def testa_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
-    player = uno.Player(0, [])
+    player = uno.Player(0, [uno.Card(0, 'R'), uno.Card(13, '')])
     bot.send_message(chat_id=chat_id, text=player.get_formatted_hand())
 
 
 def testb_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
+    ps = {"name" : "name", "example" : "ex"}
     game = uno.Game(chat_id, {"name" : "name", "example" : "ex"})
+    for p in ps.keys():
+        bot.send_message(chat_id=chat_id, text=game.get_player(p).get_formatted_hand())
     game.play_initial_card()
     bot.send_message(chat_id=chat_id, text=game.get_state())
 

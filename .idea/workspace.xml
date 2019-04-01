@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="uno.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="28" />
+            <state relative-caret-position="5033">
+              <caret line="360" column="0" lean-forward="true" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -29,8 +28,8 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="343" column="21" lean-forward="true" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
+            <state relative-caret-position="256">
+              <caret line="312" column="64" lean-forward="false" selection-start-line="312" selection-start-column="64" selection-end-line="312" selection-end-column="64" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -679,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="28" />
+        <state relative-caret-position="5033">
+          <caret line="360" column="0" lean-forward="true" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
@@ -689,8 +688,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="343" column="21" lean-forward="true" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
+        <state relative-caret-position="256">
+          <caret line="312" column="64" lean-forward="false" selection-start-line="312" selection-start-column="64" selection-end-line="312" selection-end-column="64" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
