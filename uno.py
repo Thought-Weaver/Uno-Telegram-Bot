@@ -178,7 +178,7 @@ class Game:
         self.waiting_for_wild_id = ""
         self.waiting_for_wild_name = ""
         self.uno_pending = False
-        self.uno_pending_name = ""
+        self.uno_pending_id = ""
         self.dir = False
         self.reversed = False
         self.draw_fours_pending = 0
@@ -321,6 +321,10 @@ class Game:
         self.next_turn(1)
 
     def set_wild_color(self, id, c):
+        if id != self.turn:
+            self.send_message("It is not currently your turn!")
+            return
+
         if not self.waiting_for_wild:
             self.send_message("An uncolored Wild card is not on top of the played pile.")
             return
