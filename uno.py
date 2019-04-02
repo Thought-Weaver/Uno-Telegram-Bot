@@ -170,6 +170,7 @@ class Deck:
 
 class Game:
     def __init__(self, chat_id, players):
+        bot.send_message(chat_id=chat_id, text="This is a test.")
         self.turn = 0
         self.players = {}
         self.deck = Deck(len(players))
@@ -184,7 +185,7 @@ class Game:
         self.chat_id = chat_id
         count = 0
         for user_id, name in players.items():
-            self.send_message(user_id + " has been added to the game.\n")
+            self.send_message(name + " has been added to the game.\n")
             self.players[user_id] = Player(count, self.deck.draw_hand())
             count += 1
         self.send_message("Everything has been set up.\n")

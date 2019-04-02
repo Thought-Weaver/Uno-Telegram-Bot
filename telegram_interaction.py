@@ -37,7 +37,7 @@ def static_handler(command):
 
 def reset_chat_data(chat_data):
     chat_data["is_game_pending"] = False
-    chat_data["uno_pending_players"] = {}
+    chat_data["pending_players"] = {}
     chat_data["game_obj"] = None
 
 
@@ -66,11 +66,11 @@ def is_nickname_valid(name, user_id, chat_data):
     if len(name) < 3 or len(name) > 15:
         return False
 
-    if user_id in chat_data.get("uno_pending_players", {}):
-        if name.lower() == chat_data["uno_pending_players"][user_id].lower():
+    if user_id in chat_data.get("pending_players", {}):
+        if name.lower() == chat_data["pending_players"][user_id].lower():
             return True
 
-    for id, user_name in chat_data.get("uno_pending_players", {}).items():
+    for id, user_name in chat_data.get("pending_players", {}).items():
         if name.lower() == user_name.lower():
             return False
 
@@ -96,11 +96,11 @@ def join_handler(bot, update, chat_data, args):
         nickname = update.message.from_user.first_name
 
     if is_nickname_valid(nickname, user_id, chat_data):
-        chat_data["uno_pending_players"][user_id] = nickname
+        chat_data["pending_players"][user_id] = nickname
         bot.send_message(chat_id=update.message.chat_id,
                          text="Joined with nickname %s!" % nickname)
         bot.send_message(chat_id=update.message.chat_id,
-                         text="Current player count: %d" % len(chat_data.get("uno_pending_players", {})))
+                         text="Current player count: %d" % len(chat_data.get("pending_players", {})))
     else:
         text = open("static_responses/invalid_nickname.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
@@ -115,11 +115,11 @@ def leave_handler(bot, update, chat_data):
 
     if not chat_data.get("is_game_pending", False):
         text = open("static_responses/leave_game_not_pending_failure.txt", "r").read()
-    elif user_id not in chat_data.get("uno_pending_players", {}):
+    elif user_id not in chat_data.get("pending_players", {}):
         text = open("static_responses/leave_id_missing_failure.txt", "r").read()
     else:
         text = "You have left the current game."
-        del chat_data["uno_pending_players"][update.message.from_user.id]
+        del chat_data["pending_players"][update.message.from_user.id]
 
     bot.send_message(chat_id=chat_id, text=text)
 
@@ -130,7 +130,7 @@ def listplayers_handler(bot, update, chat_data):
     game = chat_data.get("game_obj")
 
     if game is None or not chat_data.get("is_game_pending", False):
-        for user_id, name in chat_data.get("uno_pending_players", {}).items():
+        for user_id, name in chat_data.get("pending_players", {}).items():
             text += name + "\n"
     else:
         text = open("static_responses/listplayers_failure.txt", "r").read()
@@ -157,7 +157,7 @@ def feedback_handler(bot, update, args):
 
 def startgame_handler(bot, update, chat_data):
     chat_id = update.message.chat_id
-    pending_players = chat_data.get("uno_pending_players", {})
+    pending_players = chat_data.get("pending_players", {})
 
     if not chat_data.get("is_game_pending", False):
         text = open("static_responses/start_game_not_pending.txt", "r").read()
@@ -177,6 +177,7 @@ def startgame_handler(bot, update, chat_data):
         return
 
     chat_data["is_game_pending"] = False
+    bot.send_message(chat_id=chat_id, text=pending_players)
     game = uno.Game(chat_id, pending_players)
     chat_data["game_obj"] = game
 
