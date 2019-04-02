@@ -342,7 +342,7 @@ class Game:
         card.set_color(c)
 
     def set_uno_pending(self, val):
-        if val != True or val != False:
+        if val != True and val != False:
             self.send_message("Uno pending must be a Boolean value.")
             return
 
