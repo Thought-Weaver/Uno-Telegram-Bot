@@ -16,8 +16,8 @@
       <file leaf-file-name="uno.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="337" column="69" lean-forward="true" selection-start-line="337" selection-start-column="69" selection-end-line="337" selection-end-column="69" />
+            <state relative-caret-position="347">
+              <caret line="188" column="63" lean-forward="true" selection-start-line="188" selection-start-column="63" selection-end-line="188" selection-end-column="63" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -48,9 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pending_players&quot;, []</find>
-      <find>card.va</find>
-      <find>check_valid_value</find>
       <find>check_valid_color</find>
       <find>hand</find>
       <find>you cannot remove</find>
@@ -78,6 +75,9 @@
       <find>pending_players</find>
       <find>pending_players&quot;</find>
       <find>self.send_message</find>
+      <find>draw_and_continue</find>
+      <find>waiting_for_wild_id</find>
+      <find>uno_pending_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -690,8 +690,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="337" column="69" lean-forward="true" selection-start-line="337" selection-start-column="69" selection-end-line="337" selection-end-column="69" />
+        <state relative-caret-position="347">
+          <caret line="188" column="63" lean-forward="true" selection-start-line="188" selection-start-column="63" selection-end-line="188" selection-end-column="63" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

@@ -172,11 +172,13 @@ class Game:
     def __init__(self, chat_id, players):
         self.turn = 0
         self.players = {}
+        self.players_and_names = players
         self.deck = Deck(len(players))
         self.waiting_for_wild = False
         self.waiting_for_wild_id = ""
+        self.waiting_for_wild_name = ""
         self.uno_pending = False
-        self.uno_pending_id = ""
+        self.uno_pending_name = ""
         self.dir = False
         self.reversed = False
         self.draw_fours_pending = 0
@@ -250,6 +252,7 @@ class Game:
         if card.is_wild():
             self.waiting_for_wild = True
             self.waiting_for_wild_id = id
+            self.waiting_for_wild_name = self.players_and_names[id]
         if card.get_value() == 10:
             self.next_turn(2)
             return self.get_state()
@@ -260,6 +263,7 @@ class Game:
         if card.get_value() == 13:
             self.waiting_for_wild = True
             self.waiting_for_wild_id = id
+            self.waiting_for_wild_name = self.players_and_names[id]
         if card.get_value() == 14:
             self.draw_fours_pending += 1
 
@@ -279,7 +283,7 @@ class Game:
 
     def next_turn(self, step):
         if self.waiting_for_wild:
-            self.send_message("Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_id)
+            self.send_message("Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_name)
             return
 
         dir = -1 if self.reversed else 1
@@ -317,12 +321,12 @@ class Game:
         self.next_turn(1)
 
     def set_wild_color(self, id, c):
-        if id != self.waiting_for_wild_id:
-            self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_id)
-            return
-
         if not self.waiting_for_wild:
             self.send_message("An uncolored Wild card is not on top of the played pile.")
+            return
+
+        if id != self.waiting_for_wild_id:
+            self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_name)
             return
 
         card = self.deck.get_topmost_card()
