@@ -170,6 +170,7 @@ class Deck:
 
 class Game:
     def __init__(self, chat_id, players):
+        self.send_message(str(players))
         self.turn = 0
         self.players = {}
         self.deck = Deck(len(players))
