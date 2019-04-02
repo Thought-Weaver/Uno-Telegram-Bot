@@ -8,7 +8,7 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 from telegram.error import TelegramError, Unauthorized
 import logging
 
-import sys, os
+import sys, os, time
 
 # https://github.com/CaKEandLies/Telegram_Cthulhu/blob/master/cthulhu_game_bot.py
 # https://docs.google.com/document/d/11egPOVQx0rk9QYn6_hmUOVzY_TzZdpVGSUPND0AF_Z4/edit
@@ -182,10 +182,12 @@ def startgame_handler(bot, update, chat_data):
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
+    time.sleep(2)
     game.play_initial_card()
     bot.send_message(chat_id=chat_id, text=game.get_state())
 
     for user_id, nickname in pending_players.items():
+        time.sleep(1)
         bot.send_message(chat_id=user_id, text=game.get_player(user_id).get_formatted_hand())
 
 
