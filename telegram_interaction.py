@@ -177,7 +177,6 @@ def startgame_handler(bot, update, chat_data):
         return
 
     chat_data["is_game_pending"] = False
-    bot.send_message(chat_id=chat_id, text=pending_players)
     game = uno.Game(chat_id, pending_players)
     chat_data["game_obj"] = game
 

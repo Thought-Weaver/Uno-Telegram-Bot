@@ -170,7 +170,6 @@ class Deck:
 
 class Game:
     def __init__(self, chat_id, players):
-        bot.send_message(chat_id=chat_id, text="This is a test.")
         self.turn = 0
         self.players = {}
         self.deck = Deck(len(players))
