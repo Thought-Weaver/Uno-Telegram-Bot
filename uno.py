@@ -230,17 +230,21 @@ class Game:
 
         if player is None:
             self.send_message("You don't seem to exist!")
+            return
 
         if player.get_id() != self.turn:
             self.send_message("It is not currently your turn!")
+            return
 
         card = player.remove_card(card_id)
 
         if card is None:
             self.send_message("You cannot remove the card with this ID.")
+            return
 
         if not self.deck.check_valid_play(card):
             self.send_message("This is not a valid card.")
+            return
 
         self.deck.play_card(card)
         if card.is_wild():
@@ -276,6 +280,7 @@ class Game:
     def next_turn(self, step):
         if self.waiting_for_wild:
             self.send_message("Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_id)
+            return
 
         dir = -1 if self.reversed else 1
         self.turn = (self.turn + step * dir) % len(self.players)
@@ -302,9 +307,11 @@ class Game:
 
         if player is None:
             self.send_message("You don't seem to exist!")
+            return
 
         if player.get_id() != self.turn:
             self.send_message("It is not currently your turn!")
+            return
 
         player.add_card(self.deck.draw_card())
         self.next_turn(1)
@@ -312,20 +319,24 @@ class Game:
     def set_wild_color(self, id, c):
         if id != self.waiting_for_wild_id:
             self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_id)
+            return
 
         if not self.waiting_for_wild:
             self.send_message("An uncolored Wild card is not on top of the played pile.")
+            return
 
         card = self.deck.get_topmost_card()
 
         if not card.check_valid_color():
             self.send_message("That is not a valid color. Choose R, G, B, or Y.")
+            return
 
         card.set_color(c)
 
     def set_uno_pending(self, val):
         if val != True or val != False:
-            self.send_message("Whether or not Uno is pending is a Boolean value.")
+            self.send_message("Uno pending must be a Boolean value.")
+            return
 
         self.uno_pending = val
 
