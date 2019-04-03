@@ -295,15 +295,18 @@ class Game:
             self.waiting_for_wild = True
             self.waiting_for_wild_id = id
             self.waiting_for_wild_name = self.players_and_names[id]
+            self.send_message("You have to choose a color using /wild R, Y, G, or B!")
         if card.get_value() == 10:
             self.skip_pending = True
             return
         if card.get_value() == 11:
             self.reversed = not self.reversed
+            self.send_message("The direction of the game has been reversed!")
         if card.get_value() == 12:
             self.draw_twos_pending += 1
         if card.get_value() == 14:
             self.draw_fours_pending += 1
+            self.send_message("You have to choose a color using /wild R, Y, G, or B!")
 
         return
 
