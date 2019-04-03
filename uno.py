@@ -40,6 +40,9 @@ class Player:
     def add_card(self, c):
         self.hand.append(c)
 
+    def insert_card(self, c, i):
+        self.hand.insert(i, c)
+
 
 class Card:
     """
@@ -66,7 +69,7 @@ class Card:
         return self.color in ['R', 'Y', 'G', 'B']
 
     def check_valid_value(self):
-        return self.value > 0
+        return self.value >= 0
 
     def is_wild(self):
         if self.value == 13 or self.value == 14:
@@ -76,8 +79,7 @@ class Card:
     # Just for wilds.
     def set_color(self, c):
         if self.value == 13 or self.value == 14:
-            if self.check_valid_color():
-                self.color = c
+            self.color = c
 
     def __str__(self):
         text = self.color
@@ -90,9 +92,9 @@ class Card:
         elif self.value == 12:
             text += " Draw Two"
         elif self.value == 13:
-            text += "Wild"
+            text += " Wild"
         elif self.value == 14:
-            text += "Wild Draw Four"
+            text += " Wild Draw Four"
         return text
 
 
@@ -111,7 +113,21 @@ class Deck:
                     self.deck.append(Card(i, ''))
 
         # If we have more than 10 players, add more cards in proportion.
-        for i in range(0, num_players - THRESHOLD_PLAYERS):
+        for i in range(0, max(0, num_players - THRESHOLD_PLAYERS)):
+            for j in range(0, 15):
+                for c in ['R', 'Y', 'G', 'B']:
+                    if j < 10:
+                        self.deck.append(Card(i, c))
+                        self.deck.append(Card(i, c))
+                    elif j < 13:
+                        self.deck.append(Card(i, c))
+                    else:
+                        self.deck.append(Card(i, ''))
+
+        random.shuffle(self.deck)
+
+    def double_deck(self):
+        if len(self.deck) <= 0 and len(self.played) <= 0:
             for i in range(0, 15):
                 for c in ['R', 'Y', 'G', 'B']:
                     if i < 10:
@@ -119,10 +135,9 @@ class Deck:
                         self.deck.append(Card(i, c))
                     elif i < 13:
                         self.deck.append(Card(i, c))
-                    else:
+                    elif i < 15:
                         self.deck.append(Card(i, ''))
-
-        random.shuffle(self.deck)
+            random.shuffle(self.deck)
 
     def reshuffle(self):
         if len(self.deck) <= 0 < len(self.played):
@@ -130,6 +145,8 @@ class Deck:
             self.played = self.played[-1]
 
     def draw_card(self):
+        if len(self.deck) <= 0 and len(self.played) <= 0:
+            self.double_deck()
         if len(self.deck) <= 0:
             self.reshuffle()
         return self.deck.pop()
@@ -152,6 +169,10 @@ class Deck:
         return hand
 
     def play_card(self, c):
+        if c.is_wild():
+            self.played.append(c)
+            return
+
         if c.check_valid_color() and c.check_valid_value():
             self.played.append(c)
 
@@ -167,6 +188,10 @@ class Deck:
         if c.check_valid_color() and c.check_valid_value():
             self.deck.insert(0, c)
 
+    def set_wild(self, c):
+        if c in ['R', 'Y', 'G', 'B'] and self.get_topmost_card().is_wild():
+            self.played[-1].set_color(c)
+
 
 class Game:
     def __init__(self, chat_id, players):
@@ -179,6 +204,7 @@ class Game:
         self.waiting_for_wild_name = ""
         self.uno_pending = False
         self.uno_pending_id = ""
+        self.skip_pending = False
         self.dir = False
         self.reversed = False
         self.draw_fours_pending = 0
@@ -209,15 +235,22 @@ class Game:
 
     def check_for_win(self):
         for p in self.players.keys():
-            if len(self.players.get(p, [])) <= 0 and not self.waiting_for_wild:
+            if len(self.players.get(p, []).get_hand()) <= 0 and not self.waiting_for_wild:
                 return p
         return None
+
+    def get_player_id_by_num(self, n):
+        for p in self.players.keys():
+            player = self.players[p]
+            if player.get_id() == n:
+                return p
+        return ""
 
     def get_player_name_by_num(self, n):
         for p in self.players.keys():
             player = self.players[p]
             if player.get_id() == n:
-                return p
+                return self.players_and_names[p]
         return ""
 
     def get_player_by_num(self, n):
@@ -238,6 +271,14 @@ class Game:
             self.send_message("It is not currently your turn!")
             return
 
+        if self.waiting_for_wild:
+            self.send_message("You cannot play a card; waiting for %s to set the wild color." %
+                              self.waiting_for_wild_name)
+            return
+
+        if self.uno_pending:
+            self.send_message("You cannot play a card; Uno is pending.")
+
         card = player.remove_card(card_id)
 
         if card is None:
@@ -246,6 +287,7 @@ class Game:
 
         if not self.deck.check_valid_play(card):
             self.send_message("This is not a valid card.")
+            player.insert_card(card, card_id)
             return
 
         self.deck.play_card(card)
@@ -254,38 +296,46 @@ class Game:
             self.waiting_for_wild_id = id
             self.waiting_for_wild_name = self.players_and_names[id]
         if card.get_value() == 10:
-            self.next_turn(2)
-            return self.get_state()
+            self.skip_pending = True
+            return
         if card.get_value() == 11:
             self.reversed = not self.reversed
         if card.get_value() == 12:
             self.draw_twos_pending += 1
-        if card.get_value() == 13:
-            self.waiting_for_wild = True
-            self.waiting_for_wild_id = id
-            self.waiting_for_wild_name = self.players_and_names[id]
         if card.get_value() == 14:
             self.draw_fours_pending += 1
 
-        return ""
+        return
 
     def is_uno_pending(self):
         return self.uno_pending
 
+    def is_skip_pending(self):
+        return self.skip_pending
+
+    def set_skip_pending(self, val):
+        if val != False and val != True:
+            self.send_message("Skip pending must be a Boolean value.")
+            return
+        self.skip_pending = val
+
     def check_uno_caller(self, id):
+        if self.players_and_names.get(id) is None:
+            self.send_message("You are not in the game!")
+            return -1
+
         if id != self.uno_pending_id:
             player = self.players[self.uno_pending_id]
             player.add_card(self.deck.draw_card())
-            return False
+            self.uno_pending = False
+            self.uno_pending_id = ""
+            return 0
+
         self.uno_pending = False
         self.uno_pending_id = ""
-        return True
+        return 1
 
     def next_turn(self, step):
-        if self.waiting_for_wild:
-            self.send_message("Cannot go to next turn. Waiting for %s to choose a color." % self.waiting_for_wild_name)
-            return
-
         dir = -1 if self.reversed else 1
         self.turn = (self.turn + step * dir) % len(self.players)
         next_player = self.get_player_by_num(self.turn)
@@ -311,42 +361,53 @@ class Game:
 
         if player is None:
             self.send_message("You don't seem to exist!")
-            return
+            return False
 
         if player.get_id() != self.turn:
             self.send_message("It is not currently your turn!")
+            return False
+
+        if self.waiting_for_wild:
+            self.send_message("You cannot draw a card; waiting for %s to set the wild color." %
+                              self.waiting_for_wild_name)
             return
+
+        if self.uno_pending:
+            self.send_message("You cannot draw a card; Uno is pending.")
 
         player.add_card(self.deck.draw_card())
-        self.next_turn(1)
+        return True
 
     def set_wild_color(self, id, c):
-        if id != self.turn:
+        if self.players.get(id, None).get_id() != self.turn:
             self.send_message("It is not currently your turn!")
-            return
+            return False
 
         if not self.waiting_for_wild:
             self.send_message("An uncolored Wild card is not on top of the played pile.")
-            return
+            return False
 
         if id != self.waiting_for_wild_id:
             self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_name)
-            return
+            return False
 
-        card = self.deck.get_topmost_card()
-
-        if not card.check_valid_color():
+        if not c in ['R', 'Y', 'G', 'B']:
             self.send_message("That is not a valid color. Choose R, G, B, or Y.")
-            return
+            return False
 
-        card.set_color(c)
+        self.deck.set_wild(c)
+        self.waiting_for_wild = False
+        self.waiting_for_wild_id = ""
 
-    def set_uno_pending(self, val):
+        return True
+
+    def set_uno_pending(self, val, id):
         if val != True and val != False:
             self.send_message("Uno pending must be a Boolean value.")
             return
 
         self.uno_pending = val
+        self.uno_pending_id = id
 
     def is_wild_pending(self):
         return self.waiting_for_wild
@@ -360,8 +421,8 @@ class Game:
     def get_player(self, id):
         return self.players.get(id, None)
 
-    def get_players(self, id):
-        return self.players
+    def get_players(self):
+        return self.players_and_names
 
     def get_state(self):
         text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
@@ -371,59 +432,3 @@ class Game:
         else:
             text += "Topmost Card: " + str(top_card)
         return text
-
-"""
-if __name__ == "__main__":
-    ps = {"name" : "name", "example" : "ex"}
-    game = Game(ps)
-    game.play_initial_card()
-
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-
-    print("\n----\n")
-
-    first_hand = game.get_player("name").get_hand()
-    for c in range(len(first_hand)):
-        if game.deck.check_valid_play(first_hand[c]):
-            print("Played: " + str(first_hand[c]) + "\n")
-            game.play_card("name", c)
-            break
-
-    game.next_turn(1)
-
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-
-    print("\n----\n")
-
-    second_hand = game.get_player("example").get_hand()
-    for c in range(len(second_hand)):
-        if game.deck.check_valid_play(second_hand[c]):
-            print("Played: " + str(second_hand[c]) + "\n")
-            game.play_card("example", c)
-            break
-
-    game.next_turn(1)
-
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-
-    game.draw_and_continue("name")
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-    game.draw_and_continue("example")
-    print("----")
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-    game.draw_and_continue("name")
-    print("----")
-    for p in ps.keys():
-        print(game.get_player(p).get_formatted_hand())
-    print(game.get_state())
-"""

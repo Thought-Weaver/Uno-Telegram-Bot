@@ -3,3 +3,839 @@
 2019-03-29 22:41:24,168 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-03-29 22:41:51,667 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-03-29 22:46:53,048 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:07:42,846 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:08:06,258 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:08:58,824 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:09:43,460 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:12:10,227 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 368, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:14:08,246 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:14:35,841 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:18:14,045 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:18:33,798 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 368, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:18:58,278 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:19:18,608 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 368, in get_state
+    text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:20:55,812 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:21:13,691 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:26:11,847 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:26:33,110 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 168, in startgame_handler
+    chat_data["game_obj"] = uno.Game(chat_id, pending_players)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 176, in __init__
+    self.send_message(str(len(players)))
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 197, in send_message
+    bot.send_message(chat_id=self.chat_id, text=text)
+AttributeError: 'Game' object has no attribute 'chat_id'
+2019-04-02 21:27:02,149 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:27:45,476 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:28:56,771 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:29:15,510 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 368, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:31:37,992 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:38:04,592 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x103fe2be0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 21:38:04,596 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x103fe2b00>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 21:38:04,598 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x103fe2c50>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 21:38:04,600 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x103fe2898>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2019-04-02 21:38:04,601 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x103fe2898>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')) caused by this update: None
+2019-04-02 21:38:08,858 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:40:40,851 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:43:06,492 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:44:23,345 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:44:36,927 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:44:56,184 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 175, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:45:04,776 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:45:23,737 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 175, in startgame_handler
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:47:31,820 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:47:46,500 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    text = game.get_state()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:48:42,094 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:48:52,992 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    text = game.get_state()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:49:58,100 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:50:13,082 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 174, in startgame_handler
+    text = game.get_state()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 367, in get_state
+    text = "Current Turn: " + self.get_player_id_by_num(self.turn) + "\n"
+TypeError: can only concatenate str (not "int") to str
+2019-04-02 21:50:19,984 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:52:08,819 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 21:57:25,596 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 247, in play_handler
+    winner = game.check_for_win()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 212, in check_for_win
+    if len(self.players.get(p, [])) <= 0 and not self.waiting_for_wild:
+TypeError: object of type 'Player' has no len()
+2019-04-02 21:59:25,431 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:03:01,742 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 247, in play_handler
+    winner = game.check_for_win()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 212, in check_for_win
+    if len(self.players.get(p, [])) <= 0 and not self.waiting_for_wild:
+TypeError: object of type 'Player' has no len()
+2019-04-02 22:04:15,032 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:04:58,654 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:05:24,803 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 233, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:05:28,141 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 247, in play_handler
+    winner = game.check_for_win()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 212, in check_for_win
+    if len(self.players.get(p, [])) <= 0 and not self.waiting_for_wild:
+TypeError: object of type 'Player' has no len()
+2019-04-02 22:12:35,239 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1095fe160>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:35,240 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56208>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:35,241 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56550>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:35,243 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56668>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2019-04-02 22:12:35,243 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56668>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')) caused by this update: None
+2019-04-02 22:12:36,245 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1095feb38>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:36,246 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b562e8>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:36,248 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56278>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-02 22:12:36,249 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56828>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2019-04-02 22:12:36,249 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x109b56828>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')) caused by this update: None
+2019-04-02 22:13:28,421 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:18:52,436 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 254, in play_handler
+    winner = game.check_for_win()
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 212, in check_for_win
+    if len(self.players.get(p, [])) <= 0 and not self.waiting_for_wild:
+TypeError: object of type 'Player' has no len()
+2019-04-02 22:19:32,855 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:20:20,413 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:21:22,686 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:22:57,583 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:23:12,461 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 261, in play_handler
+    for id in game.get_players().keys():
+TypeError: get_players() missing 1 required positional argument: 'id'
+2019-04-02 22:23:20,385 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 261, in play_handler
+    for id in game.get_players().keys():
+TypeError: get_players() missing 1 required positional argument: 'id'
+2019-04-02 22:25:39,638 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:25:58,923 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 213, in draw_handler
+    for id in game.get_players().keys():
+TypeError: get_players() missing 1 required positional argument: 'id'
+2019-04-02 22:31:34,684 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:32:03,553 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 265, in play_handler
+    for user_id, nickname in game.get_players().items():
+TypeError: get_players() missing 1 required positional argument: 'id'
+2019-04-02 22:33:15,495 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:40:28,161 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:42:48,875 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:43:47,558 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:43:53,350 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:48:00,319 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:49:18,167 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:51:16,283 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:54:46,653 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:54:50,339 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:57:32,268 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 22:58:17,098 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 22:59:18,150 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:00:50,809 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:01:43,608 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 252, in play_handler
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 76, in decorator
+    url, data = func(self, *args, **kwargs)
+TypeError: send_message() missing 1 required positional argument: 'text'
+2019-04-02 23:02:40,708 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:02:43,213 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:06:03,398 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:06:40,192 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:07:14,861 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:07:56,148 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:08:02,410 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 251, in play_handler
+    reply_markup=telegram.InlineKeyboardMarkup([telegram.InlineKeyboardButton("Uno")]))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 76, in decorator
+    url, data = func(self, *args, **kwargs)
+TypeError: send_message() missing 1 required positional argument: 'text'
+2019-04-02 23:08:06,478 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 255, in play_handler
+    bot.send_message(chat_id=chat_id, text=winner + " has won!")
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2019-04-02 23:08:27,934 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:09:02,421 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 252, in play_handler
+    reply_markup=telegram.InlineKeyboardMarkup([telegram.InlineKeyboardButton("Uno")]))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 76, in decorator
+    url, data = func(self, *args, **kwargs)
+TypeError: send_message() missing 1 required positional argument: 'text'
+2019-04-02 23:09:06,725 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:13:37,280 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 251, in play_handler
+    reply_markup=telegram.InlineKeyboardMarkup(telegram.InlineKeyboardButton(text="Uno")))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 76, in decorator
+    url, data = func(self, *args, **kwargs)
+TypeError: send_message() missing 1 required positional argument: 'text'
+2019-04-02 23:15:16,135 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:15:20,487 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:15:32,631 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in test_handler
+    reply_markup=telegram.InlineKeyboardMarkup(telegram.InlineKeyboardButton(text="Uno")))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 47, in to_dict
+    for inline_keyboard in self.inline_keyboard:
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-02 23:16:40,276 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:16:45,531 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in test_handler
+    reply_markup=telegram.InlineKeyboardMarkup([telegram.InlineKeyboardButton(text="Uno")]))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in to_dict
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in <listcomp>
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-02 23:16:56,568 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:17:01,458 - telegram.ext.dispatcher - WARNING - A TelegramError was raised while processing the Update
+2019-04-02 23:17:01,458 - __main__ - WARNING - Telegram Error! Can't parse inline keyboard button: text buttons are unallowed in the inline keyboard caused by this update: {'update_id': 825704084, 'message': {'message_id': 1394, 'date': 1554272220, 'chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}, 'text': '/test', 'entities': [{'type': 'bot_command', 'offset': 0, 'length': 5}], 'caption_entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}}, '_effective_user': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}, '_effective_chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}}
+2019-04-02 23:19:12,091 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:19:18,475 - telegram.ext.dispatcher - WARNING - A TelegramError was raised while processing the Update
+2019-04-02 23:19:18,475 - __main__ - WARNING - Telegram Error! Can't parse inline keyboard button: text buttons are unallowed in the inline keyboard caused by this update: {'update_id': 825704085, 'message': {'message_id': 1395, 'date': 1554272357, 'chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}, 'text': '/test', 'entities': [{'type': 'bot_command', 'offset': 0, 'length': 5}], 'caption_entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}}, '_effective_user': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}, '_effective_chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}}
+2019-04-02 23:19:29,070 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:19:35,888 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in test_handler
+    reply_markup=telegram.InlineKeyboardMarkup([[telegram.InlineKeyboardButton(callback_data="")]]))
+TypeError: __init__() missing 1 required positional argument: 'text'
+2019-04-02 23:19:55,272 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:20:05,061 - telegram.ext.dispatcher - WARNING - A TelegramError was raised while processing the Update
+2019-04-02 23:20:05,062 - __main__ - WARNING - Telegram Error! Can't parse inline keyboard button: text buttons are unallowed in the inline keyboard caused by this update: {'update_id': 825704087, 'message': {'message_id': 1397, 'date': 1554272404, 'chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}, 'text': '/test', 'entities': [{'type': 'bot_command', 'offset': 0, 'length': 5}], 'caption_entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}}, '_effective_user': {'id': 539621524, 'first_name': 'Logan', 'is_bot': False, 'last_name': 'Apple', 'language_code': 'en'}, '_effective_chat': {'id': 539621524, 'type': 'private', 'first_name': 'Logan', 'last_name': 'Apple'}}
+2019-04-02 23:29:10,023 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:29:43,867 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:30:40,393 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:30:59,932 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:34:18,752 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:37:54,975 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:37:56,798 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:37:59,196 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:41:21,363 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:41:57,278 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 251, in play_handler
+    text=user_id + " has Uno! Click the button to call it!",
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2019-04-02 23:43:01,829 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:43:34,203 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:43:38,077 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:43:38,705 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:43:38,855 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:43:40,174 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:43:42,328 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+TypeError: uno_button() missing 1 required positional argument: 'chat_data'
+2019-04-02 23:44:18,935 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:46:45,509 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 272, in uno_button
+    chat_id = update.message.chat.id
+AttributeError: 'NoneType' object has no attribute 'chat'
+2019-04-02 23:46:49,249 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 272, in uno_button
+    chat_id = update.message.chat.id
+AttributeError: 'NoneType' object has no attribute 'chat'
+2019-04-02 23:52:38,455 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:54:02,631 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:54:13,416 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 283, in uno_button
+    name = game.players_and_names[user_id]
+KeyError: <telegram.user.User object at 0x10eff4dd8>
+2019-04-02 23:56:19,085 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:57:40,664 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-02 23:58:08,264 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 284, in uno_button
+    name = game.players_and_names[user_id]
+KeyError: <telegram.user.User object at 0x108e3cfd0>
+2019-04-02 23:58:18,763 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 284, in uno_button
+    name = game.players_and_names[user_id]
+KeyError: <telegram.user.User object at 0x108e3cd30>
+2019-04-02 23:58:55,234 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:59:25,751 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-02 23:59:31,282 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:00:12,071 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 286, in uno_button
+    name = game.players_and_names[user_id]
+KeyError: '539621524'
+2019-04-03 00:01:10,079 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 286, in uno_button
+    elif result == 0:
+KeyError: '539621524'
+2019-04-03 00:02:11,428 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:03:20,276 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:04:13,436 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:04:47,154 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:05:07,989 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:06:59,869 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:07:30,635 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:11:12,934 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:14:26,719 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:16:26,510 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:17:31,152 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:18:20,574 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:18:24,561 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:20:00,938 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 237, in play_handler
+    bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
+TypeError: can only concatenate str (not "NoneType") to str
+2019-04-03 00:20:09,533 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 283, in uno_button
+    result = game.check_uno_caller(user_id)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/uno.py", line 306, in check_uno_caller
+    player = self.players[self.uno_pending_id]
+KeyError: ''
+2019-04-03 00:20:37,201 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:24:54,273 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 287, in uno_button
+    name = game.players_and_names[user_id]
+KeyError: '539621524'
+2019-04-03 00:27:39,340 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 00:35:04,890 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 258, in play_handler
+    bot.send_message(chat_id=chat_id, text=winner + " has won!")
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2019-04-03 00:35:38,855 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 11:25:20,269 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 11:40:24,188 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...

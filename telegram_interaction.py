@@ -10,25 +10,18 @@ import logging
 
 import sys, os
 
-# https://github.com/CaKEandLies/Telegram_Cthulhu/blob/master/cthulhu_game_bot.py
 # https://docs.google.com/document/d/11egPOVQx0rk9QYn6_hmUOVzY_TzZdpVGSUPND0AF_Z4/edit
 # https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku
 
 with open("api_key.txt", 'r') as f:
     TOKEN = f.read().rstrip()
 
-MIN_PLAYERS = 2
+MIN_PLAYERS = 1
 THRESHOLD_PLAYERS = 10
 PORT = int(os.environ.get('PORT', '8443'))
 
 
 def static_handler(command):
-    """
-    Given a string command, returns a CommandHandler for that string that
-    responds to messages with the content of static_responses/[command].txt
-    Throws IOError if file does not exist.
-    """
-
     text = open("static_responses/{}.txt".format(command), "r").read()
 
     return CommandHandler(command,
@@ -42,9 +35,6 @@ def reset_chat_data(chat_data):
 
 
 def newgame_handler(bot, update, chat_data):
-    """
-    Create a new game of Uno.
-    """
     game = chat_data.get("game_obj")
     chat_id = update.message.chat.id
 
@@ -107,9 +97,6 @@ def join_handler(bot, update, chat_data, args):
 
 
 def leave_handler(bot, update, chat_data):
-    """
-    Forces a user to leave the current game.
-    """
     chat_id = update.message.chat_id
     user_id = update.message.from_user.id
 
@@ -138,6 +125,7 @@ def listplayers_handler(bot, update, chat_data):
     bot.send_message(chat_id=chat_id, text=text)
 
 
+# Thanks Amrita!
 def feedback_handler(bot, update, args):
     """
     Store feedback from users in a text file.
@@ -186,7 +174,7 @@ def startgame_handler(bot, update, chat_data):
     bot.send_message(chat_id=chat_id, text=game.get_state())
 
     for user_id, nickname in pending_players.items():
-        bot.send_message(chat_id=user_id, text=game.get_player(user_id).get_formatted_hand())
+        bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
 
 def endgame_handler(bot, update, chat_data):
@@ -219,10 +207,14 @@ def draw_handler(bot, update, chat_data):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    game.draw_and_continue(user_id)
+    result = game.draw_and_continue(user_id)
+    if not result:
+        return
+
+    game.next_turn(1)
     bot.send_message(chat_id=chat_id, text=game.get_state())
-    for id in game.get_players().keys():
-        bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
+    for user_id, nickname in game.get_players().items():
+        bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
 
 def play_handler(bot, update, chat_data, args):
@@ -239,11 +231,7 @@ def play_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    result = game.play_card(user_id, int(" ".join(args)))
-
-    if result != "":
-        bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n\n" + result)
-        return
+    game.play_card(user_id, int(" ".join(args)))
 
     player = game.get_player(user_id)
 
@@ -252,27 +240,36 @@ def play_handler(bot, update, chat_data, args):
         return
 
     if len(player.get_hand()) == 1:
-        game.set_uno_pending(True)
+        game.set_uno_pending(True, user_id)
+        name = game.players_and_names[user_id]
         bot.send_message(chat_id=chat_id,
-                         reply_markup=telegram.InlineKeyboardMarkup([telegram.InlineKeyboardButton("Uno")]))
+                         text=name + " has Uno! Click the button to call it!",
+                         reply_markup=telegram.InlineKeyboardMarkup(
+                             [[telegram.InlineKeyboardButton(text="Uno", callback_data=user_id)]]))
 
     winner = game.check_for_win()
     if winner is not None:
-        bot.send_message(chat_id=chat_id, text=winner + " has won!")
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
         endgame_handler(bot, update, chat_data)
         return
 
-    if not game.is_uno_pending:
+    if game.is_uno_pending() or game.is_wild_pending():
+        return
+
+    game.next_turn(1)
+    if game.is_skip_pending():
+        bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n")
         game.next_turn(1)
-        bot.send_message(chat_id=chat_id, text=game.get_state())
-        for id in game.get_players().keys():
-            bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
+        game.set_skip_pending(False)
+    bot.send_message(chat_id=chat_id, text=game.get_state())
+    for user_id, nickname in game.get_players().items():
+        bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
 
 def uno_button(bot, update, chat_data):
     query = update.callback_query
-    chat_id = update.message.chat.id
-    user_id = query.from_user
+    chat_id = query.message.chat_id
+    user_id = int(query.data)
     game = chat_data["game_obj"]
 
     if game is None:
@@ -281,8 +278,21 @@ def uno_button(bot, update, chat_data):
         return
 
     if game.is_uno_pending():
-        game.check_uno_caller(user_id)
+        result = game.check_uno_caller(user_id)
+        if result == -1:
+            return
+        elif result == 0:
+            name = game.players_and_names[user_id]
+            bot.send_message(chat_id=chat_id, text=name + " didn't call Uno first! They've drawn a card.")
+        elif result == 1:
+            name = game.players_and_names[user_id]
+            bot.send_message(chat_id=chat_id, text=name + " called Uno first!")
+
         game.next_turn(1)
+        if game.is_skip_pending():
+            bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n")
+            game.next_turn(1)
+            game.set_skip_pending(False)
         bot.send_message(chat_id=chat_id, text=game.get_state())
         for id in game.get_players().keys():
             bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
@@ -298,8 +308,26 @@ def wild_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    game.set_wild_color(user_id, " ".join(args))
-    game.next_turn(1)
+    result = game.set_wild_color(user_id, " ".join(args))
+    if result:
+        game.next_turn(1)
+        bot.send_message(chat_id=chat_id, text=game.get_state())
+        for user_id, nickname in game.get_players().items():
+            bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
+
+
+def hand_handler(bot, update, chat_data):
+    user_id = update.message.from_user.id
+    game = chat_data.get("game_obj")
+
+    if game is None:
+        text = open("static_responses/game_dne_failure.txt", "r").read()
+    elif user_id not in game.players_and_names:
+        text = open("static_responses/leave_id_missing_failure.txt", "r").read()
+    else:
+        text = game.get_player(user_id).get_formatted_hand()
+
+    bot.send_message(chat_id=user_id, text=text)
 
 
 def handle_error(bot, update, error):
@@ -307,23 +335,6 @@ def handle_error(bot, update, error):
         raise error
     except TelegramError:
         logging.getLogger(__name__).warning('Telegram Error! %s caused by this update: %s', error, update)
-
-
-def testa_handler(bot, update, chat_data):
-    chat_id = update.message.chat.id
-    player = uno.Player(0, [uno.Card(0, 'R'), uno.Card(13, '')])
-    bot.send_message(chat_id=chat_id, text=player.get_formatted_hand())
-
-
-def testb_handler(bot, update, chat_data):
-    chat_id = update.message.chat.id
-    ps = {"12515" : "name", "9125812" : "ex", "1212" : "Meow"}
-    game = uno.Game(chat_id, ps)
-    bot.send_message(chat_id=chat_id, text=ps)
-    for p in ps.keys():
-        bot.send_message(chat_id=chat_id, text=p + ":\n" + game.get_player(p).get_formatted_hand())
-    game.play_initial_card()
-    bot.send_message(chat_id=chat_id, text=game.get_state())
 
 
 if __name__ == "__main__":
@@ -341,21 +352,41 @@ if __name__ == "__main__":
 
     # Main command handlers
 
-    commands = [("feedback", 0), ("newgame", 1), ("join", 2), ("leave", 1),
-                ("listplayers", 1), ("startgame", 1), ("endgame", 1), ("draw", 1),
-                ("play", 2), ("wild", 2), ("testa", 1), ("testb", 1)]
+    join_aliases = ["join"]
+    leave_aliases = ["leave", "unjoin"]
+    listplayers_aliases = ["listplayers", "list"]
+    draw_aliases = ["draw", "d"]
+    play_aliases = ["play", "p"]
+    wild_aliases = ["wild", "w"]
+    feedback_aliases = ["feedback"]
+    newgame_aliases = ["newgame"]
+    startgame_aliases = ["startgame"]
+    endgame_aliases = ["endgame"]
+    hand_aliases = ["hand"]
+
+    commands = [("feedback", 0, feedback_aliases),
+                ("newgame", 1, newgame_aliases),
+                ("join", 2, join_aliases),
+                ("leave", 1, leave_aliases),
+                ("listplayers", 1, listplayers_aliases),
+                ("startgame", 1, startgame_aliases),
+                ("endgame", 1, endgame_aliases),
+                ("draw", 1, draw_aliases),
+                ("play", 2, play_aliases),
+                ("wild", 2, wild_aliases),
+                ("hand", 1, hand_aliases)]
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:
-            dispatcher.add_handler(CommandHandler(c[0], func, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[2], func, pass_args=True))
         elif c[1] == 1:
-            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True))
+            dispatcher.add_handler(CommandHandler(c[2], func, pass_chat_data=True))
         elif c[1] == 2:
-            dispatcher.add_handler(CommandHandler(c[0], func, pass_chat_data=True, pass_args=True))
+            dispatcher.add_handler(CommandHandler(c[2], func, pass_chat_data=True, pass_args=True))
 
     # Uno button handler
 
-    dispatcher.add_handler(CallbackQueryHandler(uno_button))
+    dispatcher.add_handler(CallbackQueryHandler(uno_button, pass_chat_data=True))
 
     # Error handlers
 
@@ -364,8 +395,6 @@ if __name__ == "__main__":
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO, filename='logging.txt', filemode='a')
-
-    # Begin the updater.
 
     updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
     updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
