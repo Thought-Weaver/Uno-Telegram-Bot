@@ -839,3 +839,105 @@ TypeError: unsupported operand type(s) for +: 'int' and 'str'
 2019-04-03 00:35:38,855 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-03 11:25:20,269 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-03 11:40:24,188 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 21:59:15,594 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 370, in timer_handler
+    text = open("static_responses/timer_id_missing_failure.txt", "r").read()
+FileNotFoundError: [Errno 2] No such file or directory: 'static_responses/timer_id_missing_failure.txt'
+2019-04-03 21:59:22,169 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 22:04:19,570 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 22:05:58,951 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6d68>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:03,957 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6cf8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:08,960 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f66d8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:13,968 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6908>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2019-04-03 22:06:13,969 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6908>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')) caused by this update: None
+2019-04-03 22:06:19,979 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6c18>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:24,982 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f62b0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:29,988 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f65f8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:34,997 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6668>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2019-04-03 22:06:34,997 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1028f6668>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')) caused by this update: None
+2019-04-03 22:06:41,504 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x102382978>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:46,513 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1023b0fd0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:51,523 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x1023b0dd8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:06:56,533 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290aeb8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2019-04-03 22:06:56,533 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290aeb8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')) caused by this update: None
+2019-04-03 22:07:03,791 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290a9e8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:07:08,797 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290ab00>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:07:13,804 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290a828>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates
+2019-04-03 22:07:18,810 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290a6a0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2019-04-03 22:07:18,811 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10290a6a0>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')) caused by this update: None
+2019-04-03 22:07:21,363 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 22:14:23,148 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x104ed0208>, 'Connect timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getMe
+2019-04-03 22:15:04,351 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 22:16:50,062 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:17:05,717 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:17:20,719 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 22:41:38,901 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x104c50320>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/deleteWebhook
+2019-04-03 22:42:11,744 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:42:18,236 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:42:32,804 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:43:37,322 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:44:00,718 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 279, in play_handler
+    chat_data.get("timer_obj").cancel()
+AttributeError: 'NoneType' object has no attribute 'cancel'
+2019-04-03 22:45:36,267 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 23:18:48,649 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-03 23:21:19,478 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...

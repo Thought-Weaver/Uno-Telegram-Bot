@@ -1,0 +1,1 @@
+You cannot set the timer for the game; you aren't in it!
