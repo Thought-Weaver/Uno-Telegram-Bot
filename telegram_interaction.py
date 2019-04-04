@@ -168,7 +168,7 @@ def startgame_handler(bot, update, chat_data):
     chat_data["game_obj"] = uno.Game(chat_id, pending_players)
     game = chat_data["game_obj"]
 
-    game.set_timer_lap(chat_data.get("timer_lap", -1))
+    game.set_timer_lap(chat_data.get("hpt_lap", -1))
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
@@ -178,8 +178,8 @@ def startgame_handler(bot, update, chat_data):
     for user_id, nickname in pending_players.items():
         bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
-    if game.get_timer_lap() > 0:
-        chat_data["timer_obj"] = threading.Timer(game.get_timer_lap(), timer_turn, [bot, update, chat_data]).start()
+    if game.get_hpt_lap() > 0:
+        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def endgame_handler(bot, update, chat_data):
@@ -262,8 +262,8 @@ def play_handler(bot, update, chat_data, args):
         return
 
     if game.is_uno_pending() or game.is_wild_pending():
-        if game.get_timer_lap() > 0:
-            chat_data.get("timer_obj").cancel()
+        if game.get_hpt_lap() > 0:
+            chat_data.get("hpt").cancel()
         return
 
     game.next_turn(1)
@@ -275,9 +275,9 @@ def play_handler(bot, update, chat_data, args):
     for user_id, nickname in game.get_players().items():
         bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
-    if game.get_timer_lap() > 0:
-        chat_data.get("timer_obj").cancel()
-        chat_data["timer_obj"] = threading.Timer(game.get_timer_lap(), timer_turn, [bot, update, chat_data]).start()
+    if game.get_hpt_lap() > 0:
+        chat_data.get("hpt").cancel()
+        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def uno_button(bot, update, chat_data):
@@ -311,9 +311,9 @@ def uno_button(bot, update, chat_data):
         for id in game.get_players().keys():
             bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
-        if game.get_timer_lap() > 0:
-            chat_data.get("timer_obj").cancel()
-            chat_data["timer_obj"] = threading.Timer(game.get_timer_lap(), timer_turn, [bot, update, chat_data]).start()
+        if game.get_hpt_lap() > 0:
+            chat_data.get("hpt").cancel()
+            chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def wild_handler(bot, update, chat_data, args):
@@ -333,9 +333,9 @@ def wild_handler(bot, update, chat_data, args):
         for user_id, nickname in game.get_players().items():
             bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
-    if game.get_timer_lap() > 0:
-        chat_data.get("timer_obj").cancel()
-        chat_data["timer_obj"] = threading.Timer(game.get_timer_lap(), timer_turn, [bot, update, chat_data]).start()
+    if game.get_hpt_lap() > 0:
+        chat_data.get("hpt").cancel()
+        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def hand_handler(bot, update, chat_data):
@@ -352,42 +352,42 @@ def hand_handler(bot, update, chat_data):
     bot.send_message(chat_id=user_id, text=text)
 
 
-def timer_handler(bot, update, chat_data, args):
+def hpt_handler(bot, update, chat_data, args):
     chat_id = update.message.chat_id
     user_id = update.message.from_user.id
 
     if not chat_data.get("is_game_pending", False):
-        text = open("static_responses/timer_not_pending_failure.txt", "r").read()
+        text = open("static_responses/hpt_not_pending_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
     if len(args) != 1:
-        text = open("static_responses/timer_arg_length_failure.txt", "r").read()
+        text = open("static_responses/hpt_arg_length_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
     if user_id not in chat_data.get("pending_players", {}):
-        text = open("static_responses/timer_id_missing_failure.txt", "r").read()
+        text = open("static_responses/hpt_id_missing_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
     try:
-        timer_lap = int(args[0])
+        hpt_lap = int(args[0])
     except ValueError:
-        text = open("static_responses/timer_arg_not_int.txt", "r").read()
+        text = open("static_responses/hpt_arg_not_int.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    chat_data["timer_lap"] = timer_lap
-    if timer_lap <= 0:
-        text = open("static_responses/timer_removed.txt")
+    chat_data["hpt_lap"] = hpt_lap
+    if hpt_lap <= 0:
+        text = open("static_responses/hpt_removed.txt")
     else:
-        text = "A timer of %d seconds per turn was added to the game." % timer_lap
+        text = "A Hot Potato timer of %d seconds per turn was added to the game." % hpt_lap
 
     bot.send_message(chat_id=chat_id, text=text)
 
 
-def timer_turn(bot, update, chat_data):
+def hpt_turn(bot, update, chat_data):
     chat_id = update.message.chat_id
     game = chat_data.get("game_obj")
 
@@ -403,8 +403,8 @@ def timer_turn(bot, update, chat_data):
     for user_id, nickname in game.get_players().items():
         bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
-    if game.get_timer_lap() > 0:
-        chat_data["timer_obj"] = threading.Timer(game.get_timer_lap(), timer_turn, [bot, update, chat_data]).start()
+    if game.get_hpt_lap() > 0:
+        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def handle_error(bot, update, error):
@@ -440,7 +440,7 @@ if __name__ == "__main__":
     startgame_aliases = ["startgame"]
     endgame_aliases = ["endgame"]
     hand_aliases = ["hand"]
-    timer_aliases = ["timer"]
+    hpt_aliases = ["hpt", "hotpotato"]
 
     commands = [("feedback", 0, feedback_aliases),
                 ("newgame", 1, newgame_aliases),
@@ -453,7 +453,7 @@ if __name__ == "__main__":
                 ("play", 2, play_aliases),
                 ("wild", 2, wild_aliases),
                 ("hand", 1, hand_aliases),
-                ("timer", 2, timer_aliases)]
+                ("hpt", 2, hpt_aliases)]
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:

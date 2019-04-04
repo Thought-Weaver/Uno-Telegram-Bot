@@ -1,0 +1,1 @@
+Usage: /hpt [time in seconds]

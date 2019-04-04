@@ -1,1 +1,0 @@
-Usage: /timer [time in seconds]

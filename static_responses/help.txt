@@ -13,3 +13,5 @@ Here's a list of helpful commands:
 -The /help command displays a list of these commands.
 -The /wild [either R, Y, B, or G] is to be used when a player has played a Wild card and wishes to specify the new color.
 -The /endgame command will end the current game, if it exists.
+-The /hand command will send you your current hand again.
+-The /timer [seconds] command will add a timer that'll end turns after that many seconds to a pending game. Think of it like Hot Potato Uno!

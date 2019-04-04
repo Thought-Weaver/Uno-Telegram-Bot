@@ -210,7 +210,7 @@ class Game:
         self.draw_fours_pending = 0
         self.draw_twos_pending = 0
         self.chat_id = chat_id
-        self.timer_lap = -1
+        self.hpt_lap = -1
         count = 0
         for user_id, name in players.items():
             self.send_message(name + " has been added to the game.\n")
@@ -224,11 +224,11 @@ class Game:
         except TelegramError as e:
             raise e
 
-    def set_timer_lap(self, lap):
-        self.timer_lap = lap
+    def set_hpt_lap(self, lap):
+        self.hpt_lap = lap
 
-    def get_timer_lap(self):
-        return self.timer_lap
+    def get_hpt_lap(self):
+        return self.hpt_lap
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
