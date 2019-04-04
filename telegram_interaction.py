@@ -16,7 +16,7 @@ import sys, os, threading
 with open("api_key.txt", 'r') as f:
     TOKEN = f.read().rstrip()
 
-MIN_PLAYERS = 2
+MIN_PLAYERS = 1
 THRESHOLD_PLAYERS = 10
 PORT = int(os.environ.get('PORT', '8443'))
 
@@ -168,7 +168,7 @@ def startgame_handler(bot, update, chat_data):
     chat_data["game_obj"] = uno.Game(chat_id, pending_players)
     game = chat_data["game_obj"]
 
-    game.set_timer_lap(chat_data.get("hpt_lap", -1))
+    game.set_hpt_lap(chat_data.get("hpt_lap", -1))
 
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
@@ -302,18 +302,19 @@ def uno_button(bot, update, chat_data):
             name = game.players_and_names[user_id]
             bot.send_message(chat_id=chat_id, text=name + " called Uno first!")
 
-        game.next_turn(1)
-        if game.is_skip_pending():
-            bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n")
+        if not game.is_wild_pending():
             game.next_turn(1)
-            game.set_skip_pending(False)
-        bot.send_message(chat_id=chat_id, text=game.get_state())
-        for id in game.get_players().keys():
-            bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
+            if game.is_skip_pending():
+                bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n")
+                game.next_turn(1)
+                game.set_skip_pending(False)
+            bot.send_message(chat_id=chat_id, text=game.get_state())
+            for id in game.get_players().keys():
+                bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
-        if game.get_hpt_lap() > 0:
-            chat_data.get("hpt").cancel()
-            chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
+            if game.get_hpt_lap() > 0:
+                chat_data.get("hpt").cancel()
+                chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def wild_handler(bot, update, chat_data, args):
@@ -327,7 +328,7 @@ def wild_handler(bot, update, chat_data, args):
         return
 
     result = game.set_wild_color(user_id, " ".join(args))
-    if result:
+    if result and not game.is_uno_pending():
         game.next_turn(1)
         bot.send_message(chat_id=chat_id, text=game.get_state())
         for user_id, nickname in game.get_players().items():
@@ -475,8 +476,8 @@ if __name__ == "__main__":
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO, filename='logging.txt', filemode='a')
 
-    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
+    #updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    #updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
 
-    #updater.start_polling()
+    updater.start_polling()
     updater.idle()
