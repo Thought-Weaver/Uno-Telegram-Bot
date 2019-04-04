@@ -231,7 +231,10 @@ def play_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
-    game.play_card(user_id, int(" ".join(args)))
+    valid = game.play_card(user_id, int(" ".join(args)))
+
+    if not valid:
+        return
 
     player = game.get_player(user_id)
 
@@ -269,7 +272,7 @@ def play_handler(bot, update, chat_data, args):
 def uno_button(bot, update, chat_data):
     query = update.callback_query
     chat_id = query.message.chat_id
-    user_id = int(query.data)
+    user_id = int(query.from_user.id)
     game = chat_data["game_obj"]
 
     if game is None:

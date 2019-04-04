@@ -265,16 +265,16 @@ class Game:
 
         if player is None:
             self.send_message("You don't seem to exist!")
-            return
+            return False
 
         if player.get_id() != self.turn:
             self.send_message("It is not currently your turn!")
-            return
+            return False
 
         if self.waiting_for_wild:
             self.send_message("You cannot play a card; waiting for %s to set the wild color." %
                               self.waiting_for_wild_name)
-            return
+            return False
 
         if self.uno_pending:
             self.send_message("You cannot play a card; Uno is pending.")
@@ -283,12 +283,12 @@ class Game:
 
         if card is None:
             self.send_message("You cannot remove the card with this ID.")
-            return
+            return False
 
         if not self.deck.check_valid_play(card):
             self.send_message("This is not a valid card.")
             player.insert_card(card, card_id)
-            return
+            return False
 
         self.deck.play_card(card)
         if card.is_wild():
@@ -298,7 +298,7 @@ class Game:
             self.send_message("You have to choose a color using /wild R, Y, G, or B!")
         if card.get_value() == 10:
             self.skip_pending = True
-            return
+            return True
         if card.get_value() == 11:
             self.reversed = not self.reversed
             self.send_message("The direction of the game has been reversed!")
@@ -306,9 +306,8 @@ class Game:
             self.draw_twos_pending += 1
         if card.get_value() == 14:
             self.draw_fours_pending += 1
-            self.send_message("You have to choose a color using /wild R, Y, G, or B!")
 
-        return
+        return True
 
     def is_uno_pending(self):
         return self.uno_pending
