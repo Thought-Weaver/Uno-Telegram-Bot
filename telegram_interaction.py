@@ -405,14 +405,14 @@ def hpt_turn(bot, update, chat_data):
     if game.is_uno_pending() or game.is_wild_pending():
         return
 
+    game.draw_and_continue(game.get_player_id_by_num(game.turn))
     game.next_turn(1)
-    bot.send_message(chat_id=chat_id, text="Time's up!")
+    bot.send_message(chat_id=chat_id, text="Time's up! You had to draw a card.")
     bot.send_message(chat_id=chat_id, text=game.get_state())
     for user_id, nickname in game.get_players().items():
         bot.send_message(chat_id=user_id, text=game.players[user_id].get_formatted_hand())
 
-    if game.get_hpt_lap() > 0:
-        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
+    chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def handle_error(bot, update, error):
