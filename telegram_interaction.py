@@ -284,6 +284,7 @@ def uno_button(bot, update, chat_data):
     query = update.callback_query
     chat_id = query.message.chat_id
     user_id = int(query.from_user.id)
+    person_with_uno_id = int(query.data)
     game = chat_data["game_obj"]
 
     if game is None:
@@ -296,10 +297,10 @@ def uno_button(bot, update, chat_data):
         if result == -1:
             return
         elif result == 0:
-            name = game.players_and_names[user_id]
+            name = game.players_and_names[person_with_uno_id]
             bot.send_message(chat_id=chat_id, text=name + " didn't call Uno first! They've drawn a card.")
         elif result == 1:
-            name = game.players_and_names[user_id]
+            name = game.players_and_names[person_with_uno_id]
             bot.send_message(chat_id=chat_id, text=name + " called Uno first!")
 
         if not game.is_wild_pending():
@@ -393,6 +394,12 @@ def hpt_turn(bot, update, chat_data):
     game = chat_data.get("game_obj")
 
     if game is None:
+        return
+
+    winner = game.check_for_win()
+    if winner is not None:
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
+        endgame_handler(bot, update, chat_data)
         return
 
     if game.is_uno_pending() or game.is_wild_pending():

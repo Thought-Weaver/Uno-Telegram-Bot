@@ -334,8 +334,7 @@ class Game:
             return -1
 
         if id != self.uno_pending_id:
-            player = self.players[self.uno_pending_id]
-            player.add_card(self.deck.draw_card())
+            self.players[self.uno_pending_id].add_card(self.deck.draw_card())
             self.uno_pending = False
             self.uno_pending_id = ""
             return 0
