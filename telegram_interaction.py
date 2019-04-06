@@ -145,12 +145,19 @@ def feedback_handler(bot, update, args):
 
 def startgame_handler(bot, update, chat_data):
     chat_id = update.message.chat_id
+    user_id = update.message.from_user.id
     pending_players = chat_data.get("pending_players", {})
 
     if not chat_data.get("is_game_pending", False):
         text = open("static_responses/start_game_not_pending.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
+
+    if user_id not in chat_data.get("pending_players", {}):
+        text = open("static_responses/leave_id_missing_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
     if len(pending_players) < MIN_PLAYERS:
         text = open("static_responses/start_game_min_threshold.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
@@ -184,6 +191,7 @@ def startgame_handler(bot, update, chat_data):
 
 def endgame_handler(bot, update, chat_data):
     chat_id = update.message.chat.id
+    user_id = update.message.from_user.id
     game = chat_data.get("game_obj")
 
     if chat_data.get("is_game_pending", False):
@@ -194,6 +202,11 @@ def endgame_handler(bot, update, chat_data):
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    if user_id not in game.players_and_names:
+        text = open("static_responses/leave_id_missing_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
@@ -326,6 +339,12 @@ def wild_handler(bot, update, chat_data, args):
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    winner = game.check_for_win()
+    if winner is not None:
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
+        endgame_handler(bot, update, chat_data)
         return
 
     result = game.set_wild_color(user_id, " ".join(args))

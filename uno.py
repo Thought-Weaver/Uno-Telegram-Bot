@@ -189,8 +189,8 @@ class Deck:
             self.deck.insert(0, c)
 
     def set_wild(self, c):
-        if c in ['R', 'Y', 'G', 'B'] and self.get_topmost_card().is_wild():
-            self.played[-1].set_color(c)
+        if c.lower() in ['r', 'y', 'g', 'b'] and self.get_topmost_card().is_wild():
+            self.played[-1].set_color(c.upper())
 
 
 class Game:
@@ -399,7 +399,7 @@ class Game:
             self.send_message("You cannot set the wild color. Waiting for %s to set it." % self.waiting_for_wild_name)
             return False
 
-        if not c in ['R', 'Y', 'G', 'B']:
+        if not c.lower() in ['r', 'y', 'g', 'b']:
             self.send_message("That is not a valid color. Choose R, G, B, or Y.")
             return False
 
