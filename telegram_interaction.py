@@ -225,6 +225,12 @@ def draw_handler(bot, update, chat_data):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
+    winner = game.check_for_win()
+    if winner is not None:
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
+        endgame_handler(bot, update, chat_data)
+        return
+
     result = game.draw_and_continue(user_id)
     if not result:
         return
