@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logging.txt" afterPath="$PROJECT_DIR$/logging.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +18,8 @@
       <file leaf-file-name="uno.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="330" column="24" lean-forward="false" selection-start-line="330" selection-start-column="8" selection-end-line="330" selection-end-column="24" />
+            <state relative-caret-position="349">
+              <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -28,11 +30,21 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="231" column="14" lean-forward="false" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
+            <state relative-caret-position="222">
+              <caret line="591" column="4" lean-forward="false" selection-start-line="591" selection-start-column="4" selection-end-line="591" selection-end-column="4" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logging.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logging.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-185">
+              <caret line="1217" column="18" lean-forward="true" selection-start-line="1217" selection-start-column="18" selection-end-line="1217" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,14 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uno_pending_id</find>
-      <find>uno_pending</find>
-      <find>set_uno_</find>
-      <find>wil</find>
-      <find>game.players</find>
-      <find>winner +</find>
-      <find>next_turn(</find>
-      <find>game.next_turn(1)</find>
       <find>play_handler</find>
       <find>play_card</find>
       <find>newgame_handler</find>
@@ -78,6 +82,14 @@
       <find>players_and_name</find>
       <find>set_uno_pending</find>
       <find>check_uno_caller</find>
+      <find>get_formatted</find>
+      <find>buttons.appe</find>
+      <find>buttons.</find>
+      <find>buttons =</find>
+      <find>play_handler(</find>
+      <find>buttons = []</find>
+      <find>button_handler</find>
+      <find>endgame_handler</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,7 +122,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/logging.txt" />
         <option value="$PROJECT_DIR$/static_responses/timer_not_pending_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/timer_arg_length_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/timer_id_missing_failure.txt" />
@@ -122,9 +133,10 @@
         <option value="$PROJECT_DIR$/static_responses/hpt_arg_not_int.txt" />
         <option value="$PROJECT_DIR$/static_responses/hpt_arg_length_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/help.txt" />
-        <option value="$PROJECT_DIR$/uno.py" />
         <option value="$PROJECT_DIR$/static_responses/end_game_id_missing_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/start_game_id_missing_failure.txt" />
+        <option value="$PROJECT_DIR$/uno.py" />
+        <option value="$PROJECT_DIR$/logging.txt" />
         <option value="$PROJECT_DIR$/telegram_interaction.py" />
       </list>
     </option>
@@ -150,6 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -158,16 +171,10 @@
               <item name="UnoTelegramBot" type="b2602c69:ProjectViewProjectNode" />
               <item name="UnoTelegramBot" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="UnoTelegramBot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UnoTelegramBot" type="462c0819:PsiDirectoryNode" />
-              <item name="static_responses" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -258,12 +265,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="698" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20390625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3258786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3258786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -657,18 +663,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logging.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="1030" column="92" lean-forward="true" selection-start-line="1030" selection-start-column="92" selection-end-line="1030" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static_responses/end_game_id_missing_failure.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="49" lean-forward="false" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -676,24 +674,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="330" column="24" lean-forward="false" selection-start-line="330" selection-start-column="8" selection-end-line="330" selection-end-column="24" />
+        <state relative-caret-position="349">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logging.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-185">
+          <caret line="1217" column="18" lean-forward="true" selection-start-line="1217" selection-start-column="18" selection-end-line="1217" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="231" column="14" lean-forward="false" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
+        <state relative-caret-position="222">
+          <caret line="591" column="4" lean-forward="false" selection-start-line="591" selection-start-column="4" selection-end-line="591" selection-end-column="4" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

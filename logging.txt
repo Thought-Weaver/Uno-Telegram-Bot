@@ -1037,3 +1037,221 @@ AttributeError: 'Game' object has no attribute 'set_timer_lap'
 2019-04-04 14:34:30,120 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-05 13:57:24,837 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-05 13:58:04,987 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:28:12,071 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:28:42,319 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 194, in startgame_handler
+    reply_markup=telegram.InlineKeyboardMarkup(buttons))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in to_dict
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in <listcomp>
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:28:46,028 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 435, in hand_handler
+    reply_markup=telegram.InlineKeyboardMarkup(buttons))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in to_dict
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in <listcomp>
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:30:37,859 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:33:55,868 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 194, in startgame_handler
+    reply_markup=telegram.InlineKeyboardMarkup(buttons))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in to_dict
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in <listcomp>
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:34:02,034 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:37:04,495 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 194, in startgame_handler
+    reply_markup=telegram.InlineKeyboardMarkup(buttons))
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 65, in decorator
+    result = func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/telegram/bot.py", line 86, in decorator
+    data['reply_markup'] = reply_markup.to_json()
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 57, in to_json
+    return json.dumps(self.to_dict())
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in to_dict
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 48, in <listcomp>
+    data['inline_keyboard'].append([x.to_dict() for x in inline_keyboard])
+  File "/usr/local/lib/python3.7/site-packages/telegram/inline/inlinekeyboardmarkup.py", line 47, in to_dict
+    for inline_keyboard in self.inline_keyboard:
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:37:12,701 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:51:10,718 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:51:15,636 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:51:17,793 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:51:18,039 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:51:18,287 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:51:42,220 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:53:15,176 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:53:20,207 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:54:01,434 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 333, in button_handler
+    if query[0] == "!":
+  File "/usr/local/lib/python3.7/site-packages/telegram/base.py", line 39, in __getitem__
+    return self.__dict__[item]
+KeyError: 0
+2019-04-06 01:54:26,512 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 01:54:40,397 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 336, in button_handler
+    play_handler(bot, update, chat_data, [card_id])
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 258, in play_handler
+    chat_id = update.message.chat.id
+AttributeError: 'NoneType' object has no attribute 'chat'
+2019-04-06 02:00:40,314 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:00:53,946 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 335, in button_handler
+    play_handler(bot, query, chat_data, [card_id])
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 271, in play_handler
+    valid = game.play_card(user_id, int(" ".join(args)))
+TypeError: sequence item 0: expected str instance, int found
+2019-04-06 02:01:11,616 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:02:11,681 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:03:17,765 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:03:31,329 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:44:42,810 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:47:17,320 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:54:16,905 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:55:05,366 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 02:58:02,010 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 353, in button_handler
+    play_handler(bot, query, chat_data, [query.data[1]], False)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 306, in play_handler
+    endgame_handler(bot, update, chat_data)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 219, in endgame_handler
+    text = open("static_responses/endgame_id_missing_failure.txt", "r").read()
+FileNotFoundError: [Errno 2] No such file or directory: 'static_responses/endgame_id_missing_failure.txt'
+2019-04-06 02:58:36,218 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 03:04:38,339 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 03:05:45,967 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 03:07:04,141 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
