@@ -154,7 +154,7 @@ def startgame_handler(bot, update, chat_data):
         return
 
     if user_id not in chat_data.get("pending_players", {}):
-        text = open("static_responses/leave_id_missing_failure.txt", "r").read()
+        text = open("static_responses/start_game_id_missing_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
@@ -206,7 +206,7 @@ def endgame_handler(bot, update, chat_data):
         return
 
     if user_id not in game.players_and_names:
-        text = open("static_responses/leave_id_missing_failure.txt", "r").read()
+        text = open("static_responses/endgame_id_missing_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
