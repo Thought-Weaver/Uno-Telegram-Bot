@@ -326,9 +326,9 @@ def uno_button(bot, update, chat_data):
             for id in game.get_players().keys():
                 bot.send_message(chat_id=id, text=game.get_player(id).get_formatted_hand())
 
-            if game.get_hpt_lap() > 0:
-                chat_data.get("hpt").cancel()
-                chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
+    if game.get_hpt_lap() > 0:
+        chat_data.get("hpt").cancel()
+        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def wild_handler(bot, update, chat_data, args):
