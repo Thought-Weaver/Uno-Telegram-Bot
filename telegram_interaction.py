@@ -190,7 +190,7 @@ def startgame_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+            buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                  callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
@@ -261,7 +261,7 @@ def draw_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+            buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                  callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
@@ -332,7 +332,7 @@ def play_handler(bot, update, chat_data, args, alt_ids=None):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+            buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                  callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
@@ -388,7 +388,7 @@ def button_handler(bot, update, chat_data):
                     if i > 0 and i % 4 == 0:
                         bucket += 1
                         buttons.append([])
-                    buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                    buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                          callback_data="!" + str(chat_id) + "!" + str(i)))
                 bot.send_message(chat_id=user_id,
                                  text="Your current hand:\n",
@@ -428,7 +428,7 @@ def wild_handler(bot, update, chat_data, args):
                 if i > 0 and i % 4 == 0:
                     bucket += 1
                     buttons.append([])
-                buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                      callback_data="!" + str(chat_id) + "!" + str(i)))
             bot.send_message(chat_id=user_id,
                              text="Your current hand:\n",
@@ -456,7 +456,7 @@ def hand_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+            buttons[bucket].append(telegram.InlineKeyboardButton(text="(" + str(i) + ") " + str(hand[i]),
                                                                  callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
