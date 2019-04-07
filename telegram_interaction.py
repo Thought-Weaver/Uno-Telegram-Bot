@@ -173,7 +173,7 @@ def startgame_handler(bot, update, chat_data):
 
     chat_data["is_game_pending"] = False
     chat_data["game_obj"] = uno.Game(chat_id, pending_players)
-    game = chat_data["game_obj"]
+    game = chat_data.get("game_obj")
 
     game.set_hpt_lap(chat_data.get("hpt_lap", -1))
 
@@ -190,7 +190,8 @@ def startgame_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                 callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
                          reply_markup=telegram.InlineKeyboardMarkup(buttons))
@@ -199,13 +200,13 @@ def startgame_handler(bot, update, chat_data):
         chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
-def endgame_handler(bot, update, chat_data, is_update=True):
-    if is_update:
+def endgame_handler(bot, update, chat_data, alt_ids=None):
+    if alt_ids is not None:
         chat_id = update.message.chat.id
         user_id = update.message.from_user.id
     else:
-        chat_id = update.message.chat_id
-        user_id = int(update.from_user.id)
+        chat_id = alt_ids[0]
+        user_id = alt_ids[1]
     game = chat_data.get("game_obj")
 
     if chat_data.get("is_game_pending", False):
@@ -260,19 +261,20 @@ def draw_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                 callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
                          reply_markup=telegram.InlineKeyboardMarkup(buttons))
 
 
-def play_handler(bot, update, chat_data, args, is_update=True):
-    if is_update:
+def play_handler(bot, update, chat_data, args, alt_ids=None):
+    if alt_ids is None:
         chat_id = update.message.chat.id
         user_id = update.message.from_user.id
     else:
-        chat_id = update.message.chat_id
-        user_id = int(update.from_user.id)
+        chat_id = alt_ids[0]
+        user_id = alt_ids[1]
 
     game = chat_data.get("game_obj")
 
@@ -307,7 +309,7 @@ def play_handler(bot, update, chat_data, args, is_update=True):
     winner = game.check_for_win()
     if winner is not None:
         bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
-        endgame_handler(bot, update, chat_data, is_update)
+        endgame_handler(bot, update, chat_data, alt_ids)
         return
 
     if game.is_uno_pending() or game.is_wild_pending():
@@ -330,7 +332,8 @@ def play_handler(bot, update, chat_data, args, is_update=True):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                 callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
                          reply_markup=telegram.InlineKeyboardMarkup(buttons))
@@ -344,17 +347,16 @@ def button_handler(bot, update, chat_data):
     query = update.callback_query
     chat_id = query.message.chat_id
     user_id = int(query.from_user.id)
-    game = chat_data["game_obj"]
+    game = chat_data.get("game_obj")
+
+    if query.data[0] == "!":
+        split_callback_data = query.data.split("!")
+        play_handler(bot, query, chat_data, [split_callback_data[2]], (split_callback_data[1], user_id))
+        return
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
-        return
-
-    if query.data[0] == "!":
-        print(query.data[1:])
-        print(game.players.get(user_id).get_formatted_hand())
-        play_handler(bot, query, chat_data, [query.data[1:]], False)
         return
 
     if game.is_uno_pending():
@@ -386,7 +388,8 @@ def button_handler(bot, update, chat_data):
                     if i > 0 and i % 4 == 0:
                         bucket += 1
                         buttons.append([])
-                    buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+                    buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                         callback_data="!" + str(chat_id) + "!" + str(i)))
                 bot.send_message(chat_id=user_id,
                                  text="Your current hand:\n",
                                  reply_markup=telegram.InlineKeyboardMarkup(buttons))
@@ -425,7 +428,8 @@ def wild_handler(bot, update, chat_data, args):
                 if i > 0 and i % 4 == 0:
                     bucket += 1
                     buttons.append([])
-                buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+                buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                     callback_data="!" + str(chat_id) + "!" + str(i)))
             bot.send_message(chat_id=user_id,
                              text="Your current hand:\n",
                              reply_markup=telegram.InlineKeyboardMarkup(buttons))
@@ -437,6 +441,7 @@ def wild_handler(bot, update, chat_data, args):
 
 def hand_handler(bot, update, chat_data):
     user_id = update.message.from_user.id
+    chat_id = update.message.chat.id
     game = chat_data.get("game_obj")
 
     if game is None:
@@ -451,7 +456,8 @@ def hand_handler(bot, update, chat_data):
             if i > 0 and i % 4 == 0:
                 bucket += 1
                 buttons.append([])
-            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]), callback_data="!" + str(i)))
+            buttons[bucket].append(telegram.InlineKeyboardButton(text=str(hand[i]),
+                                                                 callback_data="!" + str(chat_id) + "!" + str(i)))
         bot.send_message(chat_id=user_id,
                          text="Your current hand:\n",
                          reply_markup=telegram.InlineKeyboardMarkup(buttons))

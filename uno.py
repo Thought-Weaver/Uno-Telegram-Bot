@@ -199,18 +199,22 @@ class Game:
         self.players = {}
         self.players_and_names = players
         self.deck = Deck(len(players))
+
         self.waiting_for_wild = False
         self.waiting_for_wild_id = ""
         self.waiting_for_wild_name = ""
         self.uno_pending = False
         self.uno_pending_id = ""
+
         self.skip_pending = False
         self.dir = False
         self.reversed = False
         self.draw_fours_pending = 0
         self.draw_twos_pending = 0
+
         self.chat_id = chat_id
         self.hpt_lap = -1
+
         count = 0
         for user_id, name in players.items():
             self.send_message(name + " has been added to the game.\n")

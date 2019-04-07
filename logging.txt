@@ -1255,3 +1255,313 @@ FileNotFoundError: [Errno 2] No such file or directory: 'static_responses/endgam
 2019-04-06 03:04:38,339 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-06 03:05:45,967 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-06 03:07:04,141 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:10:39,860 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 208, in endgame_handler
+    chat_id = alt_ids[0]
+TypeError: 'NoneType' object is not subscriptable
+2019-04-06 13:11:18,902 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:12:19,052 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:31,426 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:31,570 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:31,712 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:32,271 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:36,043 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:48,509 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:48,700 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:51,130 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:57,165 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:58,800 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:12:59,535 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:13:08,923 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:13:08,967 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:13:09,048 - telegram.ext.updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running (409)
+2019-04-06 13:13:09,048 - __main__ - WARNING - Telegram Error! Conflict: terminated by other getUpdates request; make sure that only one bot instance is running (409) caused by this update: None
+2019-04-06 13:14:06,891 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:12,611 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:15,197 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:15,409 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:15,589 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:22,475 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:14:37,553 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:17:12,334 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:17:49,232 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:17:54,970 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:17:55,112 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:20:18,047 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:31:52,527 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:31:57,166 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:08,038 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:32:42,894 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:47,241 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:47,411 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:47,576 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:57,113 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:57,295 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:57,483 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:32:58,673 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:33:00,246 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/callbackqueryhandler.py", line 143, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 350, in button_handler
+    game = chat_data["game_obj"]
+KeyError: 'game_obj'
+2019-04-06 13:45:14,160 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:48:00,122 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-06 13:50:59,404 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-07 00:51:14,958 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
