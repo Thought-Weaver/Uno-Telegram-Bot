@@ -177,6 +177,12 @@ def startgame_handler(bot, update, chat_data):
 
     game.set_hpt_lap(chat_data.get("hpt_lap", -1))
 
+
+def after_ready_startgame(bot, update, chat_data):
+    game = chat_data.get("game_obj")
+    chat_id = update.message.chat_id
+    pending_players = chat_data.get("pending_players", {})
+
     text = open("static_responses/start_game.txt", "r").read()
     bot.send_message(chat_id=chat_id, text=text)
     game.play_initial_card()
@@ -200,13 +206,35 @@ def startgame_handler(bot, update, chat_data):
         chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
-def endgame_handler(bot, update, chat_data, alt_ids=None):
-    if alt_ids is not None:
-        chat_id = update.message.chat.id
-        user_id = update.message.from_user.id
+def ready_handler(bot, update, chat_data, user_data):
+    chat_id = update.message.chat_id
+    user_id = update.message.from_user.id
+    game = chat_data.get("game_obj")
+    players_and_ready = game.get_players_and_ready()
+
+    user_data["uno_chat_data"] = chat_data
+    user_data["uno_bot"]= bot
+    user_data["uno_update"] = update
+
+    if not game:
+        text = open("static_responses/ready_game_dne_failure.txt", "r").read()
+    elif user_id not in chat_data.get("pending_players", {}):
+        text = open("static_responses/ready_missing_failure.txt", "r").read()
+    elif players_and_ready[user_id]:
+        text = open("static_responses/ready_already_ready_failure.txt", "r").read()
     else:
-        chat_id = alt_ids[0]
-        user_id = alt_ids[1]
+        text = chat_data.get("pending_players", {})[user_id] + " is ready to play!"
+        players_and_ready[user_id] = True
+
+    bot.send_message(chat_id=chat_id, text=text)
+    if all(ready for ready in players_and_ready.values()):
+        game.set_ready_to_play(True)
+        after_ready_startgame(bot, update, chat_data)
+
+
+def endgame_handler(bot, update, chat_data):
+    chat_id = update.message.chat.id
+    user_id = update.message.from_user.id
     game = chat_data.get("game_obj")
 
     if chat_data.get("is_game_pending", False):
@@ -240,6 +268,11 @@ def draw_handler(bot, update, chat_data):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
+    if not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
     winner = game.check_for_win()
     if winner is not None:
         bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
@@ -268,14 +301,9 @@ def draw_handler(bot, update, chat_data):
                          reply_markup=telegram.InlineKeyboardMarkup(buttons))
 
 
-def play_handler(bot, update, chat_data, args, alt_ids=None):
-    if alt_ids is None:
-        chat_id = update.message.chat.id
-        user_id = update.message.from_user.id
-    else:
-        chat_id = alt_ids[0]
-        user_id = alt_ids[1]
-
+def play_handler(bot, update, chat_data, args):
+    chat_id = update.message.chat.id
+    user_id = update.message.from_user.id
     game = chat_data.get("game_obj")
 
     if len(args) != 1:
@@ -284,6 +312,11 @@ def play_handler(bot, update, chat_data, args, alt_ids=None):
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    if not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
@@ -309,7 +342,7 @@ def play_handler(bot, update, chat_data, args, alt_ids=None):
     winner = game.check_for_win()
     if winner is not None:
         bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
-        endgame_handler(bot, update, chat_data, alt_ids)
+        endgame_handler(bot, update, chat_data)
         return
 
     if game.is_uno_pending() or game.is_wild_pending():
@@ -343,7 +376,7 @@ def play_handler(bot, update, chat_data, args, alt_ids=None):
         chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
-def button_handler(bot, update, chat_data):
+def button_handler(bot, update, chat_data, user_data):
     query = update.callback_query
     chat_id = query.message.chat_id
     user_id = int(query.from_user.id)
@@ -351,11 +384,16 @@ def button_handler(bot, update, chat_data):
 
     if query.data[0] == "!":
         split_callback_data = query.data.split("!")
-        play_handler(bot, query, chat_data, [split_callback_data[2]], (split_callback_data[1], user_id))
+        play_handler(bot, user_data["uno_update"], user_data["uno_chat_data"], [split_callback_data[2]])
         return
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    if not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
         bot.send_message(chat_id=chat_id, text=text)
         return
 
@@ -409,6 +447,11 @@ def wild_handler(bot, update, chat_data, args):
         bot.send_message(chat_id=chat_id, text=text)
         return
 
+    if not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
     winner = game.check_for_win()
     if winner is not None:
         bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
@@ -446,6 +489,8 @@ def hand_handler(bot, update, chat_data):
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
+    elif not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
     elif user_id not in game.players_and_names:
         text = open("static_responses/leave_id_missing_failure.txt", "r").read()
     else:
@@ -561,6 +606,7 @@ if __name__ == "__main__":
     endgame_aliases = ["endgame"]
     hand_aliases = ["hand"]
     hpt_aliases = ["hpt", "hotpotato"]
+    ready_aliases = ["ready"]
 
     commands = [("feedback", 0, feedback_aliases),
                 ("newgame", 1, newgame_aliases),
@@ -573,7 +619,8 @@ if __name__ == "__main__":
                 ("play", 2, play_aliases),
                 ("wild", 2, wild_aliases),
                 ("hand", 1, hand_aliases),
-                ("hpt", 2, hpt_aliases)]
+                ("hpt", 2, hpt_aliases),
+                ("ready", 3, ready_aliases)]
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:
@@ -582,10 +629,12 @@ if __name__ == "__main__":
             dispatcher.add_handler(CommandHandler(c[2], func, pass_chat_data=True))
         elif c[1] == 2:
             dispatcher.add_handler(CommandHandler(c[2], func, pass_chat_data=True, pass_args=True))
+        elif c[1] == 3:
+            dispatcher.add_handler(CommandHandler(c[2], func, pass_chat_data=True, pass_user_data=True))
 
     # Uno button handler
 
-    dispatcher.add_handler(CallbackQueryHandler(button_handler, pass_chat_data=True))
+    dispatcher.add_handler(CallbackQueryHandler(button_handler, pass_chat_data=True, pass_user_data=True))
 
     # Error handlers
 

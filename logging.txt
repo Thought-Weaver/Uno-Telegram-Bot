@@ -1565,3 +1565,24 @@ KeyError: 'game_obj'
 2019-04-06 13:48:00,122 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-06 13:50:59,404 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
 2019-04-07 00:51:14,958 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-08 15:30:22,846 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 238, in endgame_handler
+    chat_id = alt_ids[0]
+TypeError: 'NoneType' object is not subscriptable
+2019-04-08 15:31:11,921 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 238, in endgame_handler
+    chat_id = alt_ids[0]
+TypeError: 'NoneType' object is not subscriptable
+2019-04-08 15:31:32,078 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-08 15:32:50,486 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-08 15:51:08,016 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...

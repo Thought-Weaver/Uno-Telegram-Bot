@@ -198,6 +198,8 @@ class Game:
         self.turn = 0
         self.players = {}
         self.players_and_names = players
+        self.players_and_ready = {}
+        self.ready_to_play = False
         self.deck = Deck(len(players))
 
         self.waiting_for_wild = False
@@ -219,8 +221,9 @@ class Game:
         for user_id, name in players.items():
             self.send_message(name + " has been added to the game.\n")
             self.players[user_id] = Player(count, self.deck.draw_hand())
+            self.players_and_ready[user_id] = False
             count += 1
-        self.send_message("Everything has been set up.\n")
+        self.send_message("Everything has been set up. Waiting for players to /ready.\n")
 
     def send_message(self, text):
         try:
@@ -233,6 +236,18 @@ class Game:
 
     def get_hpt_lap(self):
         return self.hpt_lap
+
+    def get_players_and_ready(self):
+        return self.players_and_ready
+
+    def set_ready_to_play(self, val):
+        if val != False and val != True:
+            self.send_message("Ready to play must be a Boolean value.")
+            return
+        self.ready_to_play = val
+
+    def get_ready_to_play(self):
+        return self.ready_to_play
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
