@@ -362,26 +362,52 @@ class Game:
         self.uno_pending_id = ""
         return 1
 
-    def next_turn(self, step):
+    def account_draw_twos(self):
         dir = -1 if self.reversed else 1
-        self.turn = (self.turn + step * dir) % len(self.players)
         next_player = self.get_player_by_num(self.turn)
-
         for i in range(self.draw_twos_pending):
             for c in self.deck.draw_n_cards(2):
                 next_player.add_card(c)
 
         if self.draw_twos_pending > 0:
+            self.send_message(self.get_player_name_by_num(self.turn) +
+                              " has to draw %d cards!" % (self.draw_twos_pending * 2))
             self.turn = (self.turn + dir) % len(self.players)
             self.draw_twos_pending = 0
 
+    def account_draw_fours(self):
+        dir = -1 if self.reversed else 1
+        next_player = self.get_player_by_num(self.turn)
         for i in range(self.draw_fours_pending):
             for c in self.deck.draw_n_cards(4):
                 next_player.add_card(c)
 
         if self.draw_fours_pending > 0:
+            self.send_message(self.get_player_name_by_num(self.turn) +
+                              " has to draw %d cards!" % (self.draw_fours_pending * 4))
             self.turn = (self.turn + dir) % len(self.players)
             self.draw_fours_pending = 0
+
+    def next_turn(self, step):
+        # This has to happen before in case the last player didn't stack.
+        if self.draw_twos_pending > 0 and self.deck.get_topmost_card().get_value() != 12:
+            self.send_message(self.get_player_name_by_num(self.turn) + " failed to stack their draw two!")
+            self.account_draw_twos()
+        if self.draw_fours_pending > 0 and self.deck.get_topmost_card().get_value() != 14:
+            self.send_message(self.get_player_name_by_num(self.turn) + " failed to stack their draw four!")
+            self.account_draw_fours()
+
+        dir = -1 if self.reversed else 1
+        self.turn = (self.turn + step * dir) % len(self.players)
+        next_player = self.get_player_by_num(self.turn)
+
+        # This happens after in case the next player cannot stack.
+        if self.draw_twos_pending > 0 and len(list(filter(lambda c: c.get_value() == 12, next_player.get_hand()))) <= 0:
+            self.send_message(self.get_player_name_by_num(self.turn) + " couldn't stack a draw two!")
+            self.account_draw_twos()
+        if self.draw_fours_pending > 0 and len(list(filter(lambda c: c.get_value() == 14, next_player.get_hand()))) <= 0:
+            self.send_message(self.get_player_name_by_num(self.turn) + " couldn't stack a draw four!")
+            self.account_draw_fours()
 
     def draw_and_continue(self, id):
         player = self.players.get(id, None)
