@@ -15,3 +15,5 @@ Here's a list of helpful commands:
 -The /endgame command will end the current game, if it exists.
 -The /hand command will send you your current hand again.
 -The /hpt [seconds] command will add a Hot Potato timer that'll end turns after that many seconds to a pending game.
+-The /ready command will ready you up if a game is about to start.
+-The /blame command will @ the current player's turn.
