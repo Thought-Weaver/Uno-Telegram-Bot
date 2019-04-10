@@ -652,7 +652,7 @@ if __name__ == "__main__":
     hand_aliases = ["hand"]
     hpt_aliases = ["hpt", "hotpotato"]
     ready_aliases = ["ready", "r"]
-    seven_aliases = ["seven", "s"]
+    seven_aliases = ["seven", "s", "swap"]
     aa_aliases = ["advancedrules", "aa"]
 
     commands = [("feedback", 0, feedback_aliases),

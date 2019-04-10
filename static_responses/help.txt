@@ -17,3 +17,5 @@ Here's a list of helpful commands:
 -The /hpt [seconds] command will add a Hot Potato timer that'll end turns after that many seconds to a pending game.
 -The /ready command will ready you up if a game is about to start.
 -The /blame command will @ the current player's turn.
+-The /aa command will toggle the advanced rules for a pending game.
+-The /seven command will choose the play with whom to swap hands if a seven was played.
