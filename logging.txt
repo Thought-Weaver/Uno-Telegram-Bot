@@ -1642,3 +1642,29 @@ TypeError: list indices must be integers or slices, not str
 2019-04-09 13:02:43,720 - telegram.ext.updater - ERROR - Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10d7008d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
 2019-04-09 13:02:43,720 - __main__ - WARNING - Telegram Error! urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot690714573:AAH4Hmbejk7HA-jviEp75m1eqCHAir2IA4k/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x10d7008d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')) caused by this update: None
 2019-04-09 13:05:42,496 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:13:10,648 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:13:13,700 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:16:07,902 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 570, in seven_handler
+    user_id_2 = args.join(" ")
+AttributeError: 'list' object has no attribute 'join'
+2019-04-09 20:16:17,345 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:24:51,056 - telegram.ext.dispatcher - ERROR - An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/usr/local/lib/python3.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "/Users/logan/PycharmProjects/UnoTelegramBot/telegram_interaction.py", line 573, in seven_handler
+    num = int(" ".join(args))
+ValueError: invalid literal for int() with base 10: 'Logan'
+2019-04-09 20:28:51,041 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:39:30,648 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:45:09,925 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:49:40,350 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...
+2019-04-09 20:51:08,740 - telegram.ext.updater - INFO - Received signal 2 (SIGINT), stopping...

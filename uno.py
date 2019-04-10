@@ -43,6 +43,9 @@ class Player:
     def insert_card(self, c, i):
         self.hand.insert(i, c)
 
+    def set_hand(self, hand):
+        self.hand = hand
+
 
 class Card:
     """
@@ -217,6 +220,11 @@ class Game:
         self.chat_id = chat_id
         self.hpt_lap = -1
 
+        self.advanced_rules = False
+        self.waiting_for_seven = False
+        self.waiting_for_seven_id = ""
+        self.waiting_for_seven_name = ""
+
         count = 0
         for user_id, name in players.items():
             self.send_message(name + " has been added to the game.\n")
@@ -248,6 +256,15 @@ class Game:
 
     def get_ready_to_play(self):
         return self.ready_to_play
+
+    def set_advanced_rules(self, val):
+        if val != False and val != True:
+            self.send_message("Advanced rules to play must be a Boolean value.")
+            return
+        self.advanced_rules = val
+
+    def is_advanced_rules(self):
+        return self.advanced_rules
 
     def play_initial_card(self):
         if self.deck.get_topmost_card() is None:
@@ -286,8 +303,64 @@ class Game:
                 return player
         return None
 
+    def play_zero(self):
+        dir = -1 if self.reversed else 1
+        last_hand = None
+
+        if dir == 1:
+            iter_range = range(len(self.players))
+        else:
+            iter_range = range(len(self.players) - 1, -1, -1)
+
+        for i in iter_range:
+            player = self.get_player_by_num(i)
+            next_player = self.get_player_by_num((i + dir) % len(self.players))
+            if last_hand is None:
+                last_hand = player.get_hand()
+            player.set_hand(next_player.get_hand())
+            if i == len(self.players) - 1:
+                player.set_hand(last_hand)
+
+    def play_seven(self, user_id_1, user_id_2):
+        player_1 = self.players.get(user_id_1)
+        player_2 = self.players.get(user_id_2)
+
+        if self.players.get(user_id_1).get_id() != self.turn:
+            self.send_message("It is not currently your turn!")
+            return False
+
+        if not self.waiting_for_seven:
+            self.send_message("A seven is not on top of the played pile.")
+            return False
+
+        if user_id_1 != self.waiting_for_seven_id:
+            self.send_message("You cannot swap! Waiting for %s to swap." % self.waiting_for_seven_name)
+            return False
+
+        if player_1 is None:
+            self.send_message("You don't seem to exist!")
+            return False
+
+        if player_2 is None:
+            self.send_message("The player you chose doesn't seem to exist!")
+            return False
+
+        if user_id_1 == user_id_2:
+            self.send_message("You cannot swap hands with yourself!")
+            return False
+
+        temp_hand = player_1.get_hand()
+        player_1.set_hand(player_2.get_hand())
+        player_2.set_hand(temp_hand)
+
+        self.waiting_for_seven = False
+        self.waiting_for_seven_id = ""
+        self.waiting_for_seven_name = ""
+
+        return True
+
     def play_card(self, id, card_id):
-        player = self.players.get(id, None)
+        player = self.players.get(id)
 
         if player is None:
             self.send_message("You don't seem to exist!")
@@ -295,6 +368,11 @@ class Game:
 
         if player.get_id() != self.turn:
             self.send_message("It is not currently your turn!")
+            return False
+
+        if self.advanced_rules and self.waiting_for_seven:
+            self.send_message("You cannot play a card; waiting for %s to choose a player for swapping hands." %
+                              self.waiting_for_seven_name)
             return False
 
         if self.waiting_for_wild:
@@ -317,6 +395,14 @@ class Game:
             return False
 
         self.deck.play_card(card)
+        if self.advanced_rules and card.get_value() == 0:
+            self.play_zero()
+            self.send_message("Everyone's hands have rotated!")
+        if self.advanced_rules and card.get_value() == 7:
+            self.waiting_for_seven = True
+            self.waiting_for_seven_id = id
+            self.waiting_for_seven_name = self.players_and_names[id]
+            self.send_message("You have to choose a player with whom you'll swap hands using /seven [player_num]!")
         if card.is_wild():
             self.waiting_for_wild = True
             self.waiting_for_wild_id = id
@@ -340,6 +426,9 @@ class Game:
 
     def is_skip_pending(self):
         return self.skip_pending
+
+    def is_seven_pending(self):
+        return self.waiting_for_seven
 
     def set_skip_pending(self, val):
         if val != False and val != True:

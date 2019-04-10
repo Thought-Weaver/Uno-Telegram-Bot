@@ -1,0 +1,1 @@
+The argument to /seven must be an int representing the player! See /listplayers to get these numbers.

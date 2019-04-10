@@ -8,7 +8,7 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 from telegram.error import TelegramError, Unauthorized
 import logging
 
-import sys, os, threading
+import sys, os, threading, time
 
 # https://docs.google.com/document/d/11egPOVQx0rk9QYn6_hmUOVzY_TzZdpVGSUPND0AF_Z4/edit
 # https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku
@@ -137,9 +137,13 @@ def listplayers_handler(bot, update, chat_data):
     text = "List of players: \n"
     game = chat_data.get("game_obj")
 
-    if game is None or not chat_data.get("is_game_pending", False):
+    if chat_data.get("is_game_pending", False):
         for user_id, name in chat_data.get("pending_players", {}).items():
             text += name + "\n"
+    elif game is not None:
+        for user_id, name in chat_data.get("pending_players", {}).items():
+            num_cards_str = str(len(game.get_player(user_id).get_hand()))
+            text += "(" + str(game.get_player(user_id).get_id()) + ") " + name + " - Cards: " + num_cards_str + "\n"
     else:
         text = open("static_responses/listplayers_failure.txt", "r").read()
 
@@ -197,6 +201,7 @@ def startgame_handler(bot, update, chat_data):
     game = chat_data.get("game_obj")
 
     game.set_hpt_lap(chat_data.get("hpt_lap", -1))
+    game.set_advanced_rules(chat_data.get("aa_rules", False))
 
 
 def after_ready_startgame(bot, update, chat_data):
@@ -331,6 +336,7 @@ def play_handler(bot, update, chat_data, args):
     if len(player.get_hand()) == 1:
         game.set_uno_pending(True, user_id)
         name = game.players_and_names[user_id]
+        time.sleep(5)
         bot.send_message(chat_id=chat_id,
                          text=name + " has Uno! Click the button to call it!",
                          reply_markup=telegram.InlineKeyboardMarkup(
@@ -342,7 +348,7 @@ def play_handler(bot, update, chat_data, args):
         endgame_handler(bot, update, chat_data)
         return
 
-    if game.is_uno_pending() or game.is_wild_pending():
+    if game.is_uno_pending() or game.is_wild_pending() or (game.advanced_rules and game.is_seven_pending()):
         if game.get_hpt_lap() > 0:
             chat_data.get("hpt").cancel()
         return
@@ -440,9 +446,9 @@ def wild_handler(bot, update, chat_data, args):
 
         send_hands(bot, chat_id, game, game.get_players())
 
-    if game.get_hpt_lap() > 0:
-        chat_data.get("hpt").cancel()
-        chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
+        if game.get_hpt_lap() > 0:
+            chat_data.get("hpt").cancel()
+            chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
 
 
 def hand_handler(bot, update, chat_data):
@@ -544,6 +550,73 @@ def blame_handler(bot, update, chat_data):
             return
 
 
+def seven_handler(bot, update, chat_data, args):
+    chat_id = update.message.chat.id
+    user_id = update.message.from_user.id
+    game = chat_data.get("game_obj")
+
+    if game is None:
+        text = open("static_responses/game_dne_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    if not game.get_ready_to_play():
+        text = open("static_responses/not_all_ready_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    winner = game.check_for_win()
+    if winner is not None:
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
+        endgame_handler(bot, update, chat_data)
+        return
+
+    try:
+        num = int(" ".join(args))
+    except ValueError:
+        text = open("static_responses/aa_arg_not_int.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    user_id_2 = game.get_player_id_by_num(num)
+    result = game.play_seven(user_id, user_id_2)
+    if result and not game.is_seven_pending():
+        print("Here!!!!")
+        name_1 = game.players_and_names[user_id]
+        name_2 = game.players_and_names[user_id_2]
+        bot.send_message(chat_id=chat_id, text=name_1 + " swapped hands with " + name_2 + "!")
+
+        game.next_turn(1)
+        bot.send_message(chat_id=chat_id, text=game.get_state())
+
+        send_hands(bot, chat_id, game, game.get_players())
+
+        if game.get_hpt_lap() > 0:
+            chat_data.get("hpt").cancel()
+            chat_data["hpt"] = threading.Timer(game.get_hpt_lap(), hpt_turn, [bot, update, chat_data]).start()
+
+
+def advanced_rules_handler(bot, update, chat_data):
+    chat_id = update.message.chat_id
+    user_id = update.message.from_user.id
+
+    if not chat_data.get("is_game_pending", False):
+        text = open("static_responses/aa_not_pending_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    if user_id not in chat_data.get("pending_players", {}):
+        text = open("static_responses/aa_id_missing_failure.txt", "r").read()
+        bot.send_message(chat_id=chat_id, text=text)
+        return
+
+    chat_data["aa_rules"] = not chat_data.get("aa_rules", False)
+    if chat_data["aa_rules"]:
+        bot.send_message(chat_id=chat_id, text="The game is using the advanced rules!")
+    else:
+        bot.send_message(chat_id=chat_id, text="The game is no longer using the advanced rules!")
+
+
 def handle_error(bot, update, error):
     try:
         raise error
@@ -578,7 +651,9 @@ if __name__ == "__main__":
     endgame_aliases = ["endgame"]
     hand_aliases = ["hand"]
     hpt_aliases = ["hpt", "hotpotato"]
-    ready_aliases = ["ready"]
+    ready_aliases = ["ready", "r"]
+    seven_aliases = ["seven", "s"]
+    aa_aliases = ["advancedrules", "aa"]
 
     commands = [("feedback", 0, feedback_aliases),
                 ("newgame", 1, newgame_aliases),
@@ -592,7 +667,9 @@ if __name__ == "__main__":
                 ("wild", 2, wild_aliases),
                 ("hand", 1, hand_aliases),
                 ("hpt", 2, hpt_aliases),
-                ("ready", 3, ready_aliases)]
+                ("ready", 3, ready_aliases),
+                ("seven", 2, seven_aliases),
+                ("advanced_rules", 1, aa_aliases)]
     for c in commands:
         func = locals()[c[0] + "_handler"]
         if c[1] == 0:

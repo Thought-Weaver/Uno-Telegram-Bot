@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f051cab4-c6c9-4ce4-9c35-80b4f76e718f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static_responses/aa_arg_not_int.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static_responses/aa_id_missing_failure.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static_responses/aa_not_pending_failure.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logging.txt" afterPath="$PROJECT_DIR$/logging.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telegram_interaction.py" afterPath="$PROJECT_DIR$/telegram_interaction.py" />
@@ -19,8 +22,8 @@
       <file leaf-file-name="uno.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5700">
-              <caret line="380" column="48" lean-forward="true" selection-start-line="380" selection-start-column="48" selection-end-line="380" selection-end-column="48" />
+            <state relative-caret-position="322">
+              <caret line="348" column="67" lean-forward="false" selection-start-line="348" selection-start-column="67" selection-end-line="348" selection-end-column="67" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -31,21 +34,11 @@
       <file leaf-file-name="telegram_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="621" column="5" lean-forward="false" selection-start-line="621" selection-start-column="5" selection-end-line="621" selection-end-column="5" />
+            <state relative-caret-position="262">
+              <caret line="698" column="5" lean-forward="false" selection-start-line="698" selection-start-column="5" selection-end-line="698" selection-end-column="5" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logging.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logging.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5612">
-              <caret line="1217" column="18" lean-forward="true" selection-start-line="1217" selection-start-column="18" selection-end-line="1217" selection-end-column="18" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -61,13 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startgame</find>
-      <find>leave_handler</find>
-      <find>wild</find>
-      <find>set_wild</find>
-      <find>set_color</find>
-      <find>players_and_name</find>
-      <find>set_uno_pending</find>
       <find>check_uno_caller</find>
       <find>get_formatted</find>
       <find>buttons.appe</find>
@@ -91,6 +77,13 @@
       <find>for i in range(len</find>
       <find>play_handler</find>
       <find>callback</find>
+      <find>seven_</find>
+      <find>advanced_rules_handler</find>
+      <find>args</find>
+      <find>args.joi</find>
+      <find>listplayers</find>
+      <find>seven_handler</find>
+      <find>play_seven</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,6 +135,9 @@
         <option value="$PROJECT_DIR$/static_responses/ready_already_ready_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/not_all_ready_failure.txt" />
         <option value="$PROJECT_DIR$/static_responses/help.txt" />
+        <option value="$PROJECT_DIR$/static_responses/aa_not_pending_failure.txt" />
+        <option value="$PROJECT_DIR$/static_responses/aa_id_missing_failure.txt" />
+        <option value="$PROJECT_DIR$/static_responses/aa_arg_not_int.txt" />
         <option value="$PROJECT_DIR$/uno.py" />
         <option value="$PROJECT_DIR$/telegram_interaction.py" />
       </list>
@@ -174,6 +170,11 @@
             <path>
               <item name="UnoTelegramBot" type="b2602c69:ProjectViewProjectNode" />
               <item name="UnoTelegramBot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UnoTelegramBot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UnoTelegramBot" type="462c0819:PsiDirectoryNode" />
+              <item name="static_responses" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -275,7 +276,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20390625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32576984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3241491" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -297,41 +298,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/uno.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3480">
-          <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uno.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -668,28 +639,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logging.txt">
+    <entry file="file://$PROJECT_DIR$/static_responses/aa_not_pending_failure.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5612">
-          <caret line="1217" column="18" lean-forward="true" selection-start-line="1217" selection-start-column="18" selection-end-line="1217" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="77" lean-forward="false" selection-start-line="0" selection-start-column="77" selection-end-line="0" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_responses/aa_id_missing_failure.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="90" lean-forward="false" selection-start-line="0" selection-start-column="90" selection-end-line="0" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_responses/aa_arg_not_int.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="101" lean-forward="false" selection-start-line="0" selection-start-column="101" selection-end-line="0" selection-end-column="101" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5700">
-          <caret line="380" column="48" lean-forward="true" selection-start-line="380" selection-start-column="48" selection-end-line="380" selection-end-column="48" />
+        <state relative-caret-position="322">
+          <caret line="348" column="67" lean-forward="false" selection-start-line="348" selection-start-column="67" selection-end-line="348" selection-end-column="67" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logging.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6466">
+          <caret line="1217" column="18" lean-forward="false" selection-start-line="1217" selection-start-column="18" selection-end-line="1217" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/telegram_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="621" column="5" lean-forward="false" selection-start-line="621" selection-start-column="5" selection-end-line="621" selection-end-column="5" />
+        <state relative-caret-position="262">
+          <caret line="698" column="5" lean-forward="false" selection-start-line="698" selection-start-column="5" selection-end-line="698" selection-end-column="5" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
