@@ -383,6 +383,9 @@ class Game:
         if self.uno_pending:
             self.send_message("You cannot play a card; Uno is pending.")
 
+        if self.waiting_for_seven:
+            self.send_message("You cannot play a card; a seven is pending.")
+
         card = player.remove_card(card_id)
 
         if card is None:
@@ -517,7 +520,17 @@ class Game:
         if self.uno_pending:
             self.send_message("You cannot draw a card; Uno is pending.")
 
-        player.add_card(self.deck.draw_card())
+        if self.waiting_for_seven:
+            self.send_message("You cannot draw a card; a seven is pending.")
+
+        card = self.deck.draw_card()
+        if self.advanced_rules:
+            while not self.deck.check_valid_play(card):
+                player.add_card(card)
+                card = self.deck.draw_card()
+            player.add_card(card)
+        else:
+            player.add_card(card)
         return True
 
     def set_wild_color(self, id, c):

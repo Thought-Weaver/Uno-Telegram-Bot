@@ -16,7 +16,7 @@ import sys, os, threading, time
 with open("api_key.txt", 'r') as f:
     TOKEN = f.read().rstrip()
 
-MIN_PLAYERS = 2
+MIN_PLAYERS = 1
 THRESHOLD_PLAYERS = 10
 PORT = int(os.environ.get('PORT', '8443'))
 
@@ -297,10 +297,14 @@ def draw_handler(bot, update, chat_data):
     if not result:
         return
 
-    game.next_turn(1)
-    bot.send_message(chat_id=chat_id, text=game.get_state())
+    if not game.is_advanced_rules():
+        game.next_turn(1)
+        bot.send_message(chat_id=chat_id, text=game.get_state())
 
-    send_hands(bot, chat_id, game, game.get_players())
+        send_hands(bot, chat_id, game, game.get_players())
+    else:
+        bot.send_message(chat_id=user_id, text=game.get_state())
+        send_hand(bot, chat_id, game, user_id)
 
 
 def play_handler(bot, update, chat_data, args):
@@ -403,7 +407,7 @@ def button_handler(bot, update, chat_data, user_data):
             name = game.players_and_names[person_with_uno_id]
             bot.send_message(chat_id=chat_id, text=name + " called Uno first!")
 
-        if not game.is_wild_pending():
+        if not game.is_wild_pending() and not game.is_seven_pending():
             game.next_turn(1)
             if game.is_skip_pending():
                 bot.send_message(chat_id=chat_id, text="The next player has been skipped!\n")
@@ -440,7 +444,7 @@ def wild_handler(bot, update, chat_data, args):
         return
 
     result = game.set_wild_color(user_id, " ".join(args))
-    if result and not game.is_uno_pending():
+    if result and not game.is_uno_pending() and not game.is_seven_pending():
         game.next_turn(1)
         bot.send_message(chat_id=chat_id, text=game.get_state())
 
@@ -580,8 +584,7 @@ def seven_handler(bot, update, chat_data, args):
 
     user_id_2 = game.get_player_id_by_num(num)
     result = game.play_seven(user_id, user_id_2)
-    if result and not game.is_seven_pending():
-        print("Here!!!!")
+    if result and not game.is_uno_pending() and not game.is_wild_pending():
         name_1 = game.players_and_names[user_id]
         name_2 = game.players_and_names[user_id_2]
         bot.send_message(chat_id=chat_id, text=name_1 + " swapped hands with " + name_2 + "!")
@@ -693,8 +696,8 @@ if __name__ == "__main__":
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO, filename='logging.txt', filemode='a')
 
-    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
+    #updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    #updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
 
-    #updater.start_polling()
+    updater.start_polling()
     updater.idle()
