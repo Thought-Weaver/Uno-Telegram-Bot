@@ -16,7 +16,7 @@ import sys, os, threading, time
 with open("api_key.txt", 'r') as f:
     TOKEN = f.read().rstrip()
 
-MIN_PLAYERS = 1
+MIN_PLAYERS = 2
 THRESHOLD_PLAYERS = 10
 PORT = int(os.environ.get('PORT', '8443'))
 
@@ -696,8 +696,8 @@ if __name__ == "__main__":
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO, filename='logging.txt', filemode='a')
 
-    #updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    #updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
+    updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    updater.bot.set_webhook("https://la-uno-bot.herokuapp.com/" + TOKEN)
 
-    updater.start_polling()
+    #updater.start_polling()
     updater.idle()
