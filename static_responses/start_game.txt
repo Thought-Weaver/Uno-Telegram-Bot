@@ -1,0 +1,5 @@
+This is the game of Uno, play begins with the first player. After each turn, the state of everyone's hand will be updated and the last played card will be displayed.
+
+The /play [card id] command will cause you to play that card from your hand, if it's your turn.
+The /wild [either R, Y, B, or G] is to be used when you've played a Wild card to specify the new color.
+The /draw command will cause you to draw a card, if it's your turn, and then end your turn.

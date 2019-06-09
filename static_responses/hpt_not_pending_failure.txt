@@ -1,0 +1,1 @@
+You cannot set the Hot Potato timer option; a game is not currently pending!
