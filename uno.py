@@ -225,6 +225,8 @@ class Game:
         self.waiting_for_seven_id = ""
         self.waiting_for_seven_name = ""
 
+        self.last_num_cards_drawn = 0
+
         count = 0
         for user_id, name in players.items():
             self.send_message(name + " has been added to the game.\n")
@@ -523,14 +525,17 @@ class Game:
         if self.waiting_for_seven:
             self.send_message("You cannot draw a card; a seven is pending.")
 
+        self.last_num_cards_drawn = 0
+
         card = self.deck.draw_card()
+        player.add_card(card)
+        self.last_num_cards_drawn += 1
+
         if self.advanced_rules:
             while not self.deck.check_valid_play(card):
                 player.add_card(card)
                 card = self.deck.draw_card()
-            player.add_card(card)
-        else:
-            player.add_card(card)
+                self.last_num_cards_drawn += 1
         return True
 
     def set_wild_color(self, id, c):

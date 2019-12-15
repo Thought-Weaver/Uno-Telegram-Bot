@@ -299,10 +299,12 @@ def draw_handler(bot, update, chat_data):
 
     if not game.is_advanced_rules():
         game.next_turn(1)
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn " +
+                                               str(game.last_num_cards_drawn) + " cards!")
         bot.send_message(chat_id=chat_id, text=game.get_state())
-
         send_hands(bot, chat_id, game, game.get_players())
     else:
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn a card!")
         bot.send_message(chat_id=user_id, text=game.get_state())
         send_hand(bot, chat_id, game, user_id)
 
@@ -340,6 +342,7 @@ def play_handler(bot, update, chat_data, args):
     if len(player.get_hand()) == 1:
         game.set_uno_pending(True, user_id)
         name = game.players_and_names[user_id]
+        # Gives the player playing from their hand time to switch to the main Uno chat.
         time.sleep(5)
         bot.send_message(chat_id=chat_id,
                          text=name + " has Uno! Click the button to call it!",
@@ -375,14 +378,16 @@ def button_handler(bot, update, chat_data, user_data):
     query = update.callback_query
     chat_id = query.message.chat_id
     user_id = int(query.from_user.id)
-    game = chat_data.get("game_obj")
 
     if query.data[0] == "!":
+        game = user_data["uno_chat_data"]["game"]
         split_callback_data = query.data.split("!")
         card = game.get_player(user_id).get_hand()[int(split_callback_data[2])]
         bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " played a " + str(card) + ".")
         play_handler(bot, user_data["uno_update"], user_data["uno_chat_data"], [split_callback_data[2]])
         return
+
+    game = chat_data.get("game_obj")
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
