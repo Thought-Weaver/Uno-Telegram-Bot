@@ -299,12 +299,12 @@ def draw_handler(bot, update, chat_data):
 
     if not game.is_advanced_rules():
         game.next_turn(1)
-        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn " +
-                                               str(game.last_num_cards_drawn) + " cards!")
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn a card!")
         bot.send_message(chat_id=chat_id, text=game.get_state())
         send_hands(bot, chat_id, game, game.get_players())
     else:
-        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn a card!")
+        bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " has drawn " +
+                                               str(game.last_num_cards_drawn) + " cards!")
         bot.send_message(chat_id=user_id, text=game.get_state())
         send_hand(bot, chat_id, game, user_id)
 
