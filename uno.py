@@ -280,7 +280,7 @@ class Game:
 
     def check_for_win(self):
         for p in self.players.keys():
-            if len(self.players.get(p, []).get_hand()) <= 0 and not self.waiting_for_wild:
+            if len(self.players.get(p, []).get_hand()) <= 0:
                 return p
         return None
 
