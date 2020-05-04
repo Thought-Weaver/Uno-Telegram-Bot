@@ -380,15 +380,14 @@ def button_handler(bot, update, chat_data, user_data):
     chat_id = query.message.chat_id
     user_id = int(query.from_user.id)
 
+    game = chat_data.get("game_obj")
+
     if query.data[0] == "!":
-        game = user_data["uno_chat_data"]["game"]
         split_callback_data = query.data.split("!")
         card = game.get_player(user_id).get_hand()[int(split_callback_data[2])]
         bot.send_message(chat_id=chat_id, text=game.players_and_names[user_id] + " played a " + str(card) + ".")
         play_handler(bot, user_data["uno_update"], user_data["uno_chat_data"], [split_callback_data[2]])
         return
-
-    game = chat_data.get("game_obj")
 
     if game is None:
         text = open("static_responses/game_dne_failure.txt", "r").read()
