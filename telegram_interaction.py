@@ -227,7 +227,7 @@ def ready_handler(bot, update, chat_data, user_data):
     players_and_ready = game.get_players_and_ready()
 
     user_data["uno_chat_data"] = chat_data
-    user_data["uno_bot"]= bot
+    user_data["uno_bot"] = bot
     user_data["uno_update"] = update
 
     if not game:
@@ -351,6 +351,7 @@ def play_handler(bot, update, chat_data, args):
 
     winner = game.check_for_win()
     if winner is not None:
+        bot.send_message(chat_id=chat_id, text="Last Card Played: " + str(game.get_topmost_card()))
         bot.send_message(chat_id=chat_id, text=game.players_and_names[winner] + " has won!")
         endgame_handler(bot, update, chat_data)
         return

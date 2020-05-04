@@ -407,12 +407,12 @@ class Game:
             self.waiting_for_seven = True
             self.waiting_for_seven_id = id
             self.waiting_for_seven_name = self.players_and_names[id]
-            self.send_message("You have to choose a player with whom you'll swap hands using /seven [player_num]!")
+            self.send_message("Now choose a player with whom you'll swap hands using /seven [player_num]!")
         if card.is_wild():
             self.waiting_for_wild = True
             self.waiting_for_wild_id = id
             self.waiting_for_wild_name = self.players_and_names[id]
-            self.send_message("You have to choose a color using /wild R, Y, G, or B!")
+            self.send_message("Now choose a color using /wild R, Y, G, or B!")
         if card.get_value() == 10:
             self.skip_pending = True
             return True
@@ -584,9 +584,12 @@ class Game:
     def get_players(self):
         return self.players_and_names
 
+    def get_topmost_card(self):
+        return self.deck.get_topmost_card()
+
     def get_state(self):
         text = "Current Turn: " + self.get_player_name_by_num(self.turn) + "\n"
-        top_card = self.deck.get_topmost_card()
+        top_card = self.get_topmost_card()
         if top_card is None:
             text += "Topmost Card: None"
         else:
